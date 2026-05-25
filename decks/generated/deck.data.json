@@ -1,18 +1,18 @@
 {
   "deck": {
-    "title": "HTML-to-PPTX Deck Generator",
-    "subtitle": "A minimal HTML rendering loop for editable PPT export",
+    "title": "Hello World PPT",
+    "subtitle": "A tiny test deck for the ppt-html-gen pipeline",
     "author": "Codex",
     "date": "2026-05-25",
-    "language": "zh-CN"
+    "language": "en-US"
   },
   "slides": [
     {
       "id": "slide-001",
       "type": "cover",
-      "kicker": "Minimal Loop",
-      "title": "HTML-to-PPTX Deck Generator",
-      "subtitle": "用固定模板、结构化数据和浏览器预览建立第一版 PPT 生成闭环。",
+      "kicker": "Pipeline Test",
+      "title": "Hello World PPT",
+      "subtitle": "A five-slide smoke test for HTML rendering and PPTX export readiness.",
       "author": "Codex",
       "date": "2026-05-25"
     },
@@ -20,132 +20,45 @@
       "id": "slide-002",
       "type": "agenda",
       "kicker": "Contents",
-      "title": "第三阶段覆盖范围",
+      "title": "Test Pages",
       "items": [
-        "建立首批可复用组件目录",
-        "让 renderer 按 layout 读取组件模板",
-        "用 schema 限制组件输入容量",
-        "为组件生成 preview.png 预览图"
+        "Open with a clean cover slide",
+        "Render a simple agenda",
+        "Check a section divider",
+        "Validate one reusable content component",
+        "Close with an ending slide"
       ]
     },
     {
       "id": "slide-003",
       "type": "section",
       "sectionNumber": "01",
-      "kicker": "Component Library",
-      "title": "组件库接入",
-      "subtitle": "正文页优先选择稳定组件，减少每次自由排版带来的溢出和导出风险。"
+      "kicker": "Demo",
+      "title": "Say Hello",
+      "subtitle": "This section keeps the content small so layout checks can focus on the rendering path."
     },
     {
       "id": "slide-004",
       "type": "content",
-      "section": "Component Library",
-      "title": "Two Column Text：并列解释",
+      "section": "Demo",
+      "title": "Hello World Works",
       "layout": "two-column-text",
       "content": {
-        "leftTitle": "Stable Assets",
-        "leftBody": "Templates and component CSS are reusable assets. Codex should fill data into them instead of rewriting visual structure every time.",
-        "rightTitle": "Editable Output",
-        "rightBody": "The generated HTML keeps text, table cells, simple shapes and images as separate DOM nodes for later PPTX export."
+        "leftTitle": "Input",
+        "leftBody": "deck.data.json defines five slides with short editable text fields.",
+        "rightTitle": "Output",
+        "rightBody": "render-deck.js turns the data into a fixed-size HTML slide deck ready for checks."
       },
-      "references": ["components/two-column-text/schema.json"]
+      "references": [
+        "components/two-column-text/schema.json"
+      ]
     },
     {
       "id": "slide-005",
-      "type": "content",
-      "section": "Component Library",
-      "title": "Three Cards：三项分类",
-      "layout": "three-cards",
-      "content": {
-        "cards": [
-          {
-            "title": "Template",
-            "body": "Controls the fixed slide frame, title hierarchy, footer and safe area."
-          },
-          {
-            "title": "Component",
-            "body": "Controls reusable content structure such as cards, tables, flows and image-text blocks."
-          },
-          {
-            "title": "Data",
-            "body": "Provides titles, bullets, table rows, figure paths and references without complex CSS."
-          }
-        ]
-      },
-      "references": ["components/three-cards/schema.json"]
-    },
-    {
-      "id": "slide-006",
-      "type": "content",
-      "section": "Component Library",
-      "title": "Comparison Table：能力对比",
-      "layout": "comparison-table",
-      "content": {
-        "columns": ["Asset", "Responsibility", "Editable", "Risk"],
-        "rows": [
-          ["Template", "Fixed page frame", "Partial", "Low"],
-          ["Component", "Content layout", "Yes", "Low"],
-          ["Image", "Visual evidence", "No", "Medium"],
-          ["Full screenshot", "Fallback only", "No", "High"]
-        ]
-      },
-      "references": ["components/comparison-table/schema.json"]
-    },
-    {
-      "id": "slide-007",
-      "type": "content",
-      "section": "Component Library",
-      "title": "Pipeline Flow：渲染与检查链路",
-      "layout": "pipeline-flow",
-      "content": {
-        "steps": [
-          {
-            "title": "Plan",
-            "description": "Confirm page list, slide type, content source and component choice."
-          },
-          {
-            "title": "Data",
-            "description": "Write deck.data.json with structure and content only."
-          },
-          {
-            "title": "Render",
-            "description": "Combine templates, component HTML and theme CSS into deck.html."
-          },
-          {
-            "title": "Check",
-            "description": "Run overflow, layout, asset and screenshot validation before export."
-          }
-        ]
-      },
-      "references": ["components/pipeline-flow/schema.json"]
-    },
-    {
-      "id": "slide-008",
-      "type": "content",
-      "section": "Component Library",
-      "title": "Image Text：图片说明",
-      "layout": "image-text",
-      "content": {
-        "image": "../../assets/images/render-loop.svg",
-        "imageAlt": "Render loop diagram",
-        "imageCaption": "Local SVG asset used as a stable figure source.",
-        "imagePosition": "left",
-        "title": "Figure plus explanation",
-        "body": "Image-text pages keep the figure and narrative separate, making the exported PPT easier to inspect and edit.",
-        "bullets": [
-          "Use local assets first.",
-          "Keep captions short.",
-          "Avoid cross-origin images."
-        ]
-      },
-      "references": ["components/image-text/schema.json"]
-    },
-    {
-      "id": "slide-009",
       "type": "ending",
-      "kicker": "Next",
-      "title": "Ready for Export",
-      "subtitle": "下一阶段可以接入油猴脚本和 dom-to-pptx，验证 HTML 到 PPTX 的可编辑导出。",
+      "kicker": "Smoke Test",
+      "title": "Done",
+      "subtitle": "The Hello World deck is ready for browser review and DOM-to-PPTX export.",
       "contact": "Generated from decks/generated/deck.data.json"
     }
   ]

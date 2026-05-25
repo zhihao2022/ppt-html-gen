@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-25T04:18:22.670Z",
+  "generatedAt": "2026-05-25T05:22:35.732Z",
   "deckHtml": "decks/generated/deck.html",
   "summary": {
     "status": "pass",
@@ -25,53 +25,53 @@
         ],
         "issues": []
       },
-      "checkedAt": "2026-05-25T04:18:14.247Z"
+      "checkedAt": "2026-05-25T05:22:25.605Z"
     },
     {
       "name": "overflow",
       "status": "pass",
-      "message": "No overflow found in 5 content slide(s).",
+      "message": "No overflow found in 1 content slide(s).",
       "details": {
-        "contentSlideCount": 5,
+        "contentSlideCount": 1,
         "issues": []
       },
-      "checkedAt": "2026-05-25T04:18:16.410Z"
+      "checkedAt": "2026-05-25T05:22:27.810Z"
     },
     {
       "name": "layout",
       "status": "pass",
-      "message": "9 slide(s) match the layout contract.",
+      "message": "5 slide(s) match the layout contract.",
       "details": {
-        "expectedSlideCount": 9,
-        "actualSlideCount": 9,
+        "expectedSlideCount": 5,
+        "actualSlideCount": 5,
         "issues": []
       },
-      "checkedAt": "2026-05-25T04:18:18.122Z"
+      "checkedAt": "2026-05-25T05:22:29.445Z"
     },
     {
       "name": "assets",
       "status": "pass",
-      "message": "1 image(s) checked; no asset/export risks found.",
+      "message": "0 image(s) checked; no asset/export risks found.",
       "details": {
-        "imageCount": 1,
+        "imageCount": 0,
         "issues": []
       },
-      "checkedAt": "2026-05-25T04:18:20.410Z"
+      "checkedAt": "2026-05-25T05:22:31.990Z"
     },
     {
       "name": "export-readiness",
       "status": "pass",
-      "message": "9 slide(s) are ready for DOM-to-PPTX export.",
+      "message": "5 slide(s) are ready for DOM-to-PPTX export.",
       "details": {
         "slideSelector": ".slide",
-        "slideCount": 9,
+        "slideCount": 5,
         "fileName": "output.pptx",
         "layout": "LAYOUT_16x9",
         "svgAsVector": true,
         "autoEmbedFonts": true,
         "issues": []
       },
-      "checkedAt": "2026-05-25T04:18:22.668Z"
+      "checkedAt": "2026-05-25T05:22:35.730Z"
     }
   ]
 }
