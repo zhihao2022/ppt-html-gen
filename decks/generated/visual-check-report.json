@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-05-25T04:15:09.856Z",
+  "generatedAt": "2026-05-25T04:18:22.670Z",
   "deckHtml": "decks/generated/deck.html",
   "summary": {
     "status": "pass",
-    "totalChecks": 4,
-    "passed": 4,
+    "totalChecks": 5,
+    "passed": 5,
     "failed": 0,
     "warnings": 0
   },
@@ -25,7 +25,7 @@
         ],
         "issues": []
       },
-      "checkedAt": "2026-05-25T04:15:03.742Z"
+      "checkedAt": "2026-05-25T04:18:14.247Z"
     },
     {
       "name": "overflow",
@@ -35,7 +35,7 @@
         "contentSlideCount": 5,
         "issues": []
       },
-      "checkedAt": "2026-05-25T04:15:05.941Z"
+      "checkedAt": "2026-05-25T04:18:16.410Z"
     },
     {
       "name": "layout",
@@ -46,7 +46,7 @@
         "actualSlideCount": 9,
         "issues": []
       },
-      "checkedAt": "2026-05-25T04:15:07.642Z"
+      "checkedAt": "2026-05-25T04:18:18.122Z"
     },
     {
       "name": "assets",
@@ -56,7 +56,22 @@
         "imageCount": 1,
         "issues": []
       },
-      "checkedAt": "2026-05-25T04:15:09.855Z"
+      "checkedAt": "2026-05-25T04:18:20.410Z"
+    },
+    {
+      "name": "export-readiness",
+      "status": "pass",
+      "message": "9 slide(s) are ready for DOM-to-PPTX export.",
+      "details": {
+        "slideSelector": ".slide",
+        "slideCount": 9,
+        "fileName": "output.pptx",
+        "layout": "LAYOUT_16x9",
+        "svgAsVector": true,
+        "autoEmbedFonts": true,
+        "issues": []
+      },
+      "checkedAt": "2026-05-25T04:18:22.668Z"
     }
   ]
 }

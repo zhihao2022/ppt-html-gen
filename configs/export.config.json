@@ -3,5 +3,12 @@
   "layout": "LAYOUT_16x9",
   "svgAsVector": true,
   "autoEmbedFonts": true,
-  "slideSelector": ".slide"
+  "slideSelector": ".slide",
+  "excludedSelectors": ["body", "html", ".deck", ".preview-wrapper"],
+  "riskSelectors": ["video", "iframe", "canvas", "foreignObject", "[style*='filter']", "[style*='animation']"],
+  "requiresLocalAssets": true,
+  "requiresFixedSlideSize": {
+    "width": 1920,
+    "height": 1080
+  }
 }
