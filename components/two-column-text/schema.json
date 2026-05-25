@@ -1,0 +1,21 @@
+{
+  "name": "two-column-text",
+  "displayName": "Two Column Text",
+  "category": "text",
+  "description": "用于展示两个并列概念、方法或观点。",
+  "suitableFor": ["two concepts comparison", "problem and solution", "method A vs method B"],
+  "fields": {
+    "leftTitle": { "type": "string", "required": true, "maxWords": 8 },
+    "leftBody": { "type": "string", "required": true, "maxWords": 55 },
+    "rightTitle": { "type": "string", "required": true, "maxWords": 8 },
+    "rightBody": { "type": "string", "required": true, "maxWords": 55 }
+  },
+  "layoutLimits": {
+    "minFontSize": 24,
+    "maxPanels": 2,
+    "allowImages": false,
+    "allowTables": false,
+    "allowNestedComponents": false
+  },
+  "exportRisk": "low"
+}

@@ -1,20 +1,47 @@
 {
   "components": [
     {
-      "name": "bullet-list",
-      "path": "built-in",
+      "name": "two-column-text",
+      "path": "components/two-column-text",
       "category": "text",
-      "description": "基础正文 bullet 列表。",
-      "bestFor": ["summary", "key points", "agenda detail"],
+      "description": "两个并列文本块。",
+      "bestFor": ["comparison", "parallel explanation", "problem-solution"],
       "maxContentDensity": "medium",
       "exportRisk": "low"
     },
     {
-      "name": "two-column-text",
-      "path": "built-in",
-      "category": "text",
-      "description": "两个并列文本块。",
-      "bestFor": ["comparison", "parallel explanation", "problem-solution"],
+      "name": "three-cards",
+      "path": "components/three-cards",
+      "category": "card",
+      "description": "三个卡片并列展示。",
+      "bestFor": ["taxonomy", "three methods", "three examples"],
+      "maxContentDensity": "medium",
+      "exportRisk": "low"
+    },
+    {
+      "name": "comparison-table",
+      "path": "components/comparison-table",
+      "category": "table",
+      "description": "用于方法、指标或数据集对比的基础表格。",
+      "bestFor": ["method comparison", "metrics", "dataset summary"],
+      "maxContentDensity": "medium",
+      "exportRisk": "low"
+    },
+    {
+      "name": "pipeline-flow",
+      "path": "components/pipeline-flow",
+      "category": "flow",
+      "description": "横向流程图。",
+      "bestFor": ["algorithm pipeline", "system workflow", "process"],
+      "maxContentDensity": "low",
+      "exportRisk": "medium"
+    },
+    {
+      "name": "image-text",
+      "path": "components/image-text",
+      "category": "media",
+      "description": "图片与解释文本并排展示。",
+      "bestFor": ["figure explanation", "screenshot analysis", "result interpretation"],
       "maxContentDensity": "medium",
       "exportRisk": "low"
     }

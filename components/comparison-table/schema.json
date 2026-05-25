@@ -1,0 +1,20 @@
+{
+  "name": "comparison-table",
+  "displayName": "Comparison Table",
+  "category": "table",
+  "description": "用于展示方法、数据集、指标或优缺点对比。",
+  "suitableFor": ["method comparison", "metric table", "dataset comparison"],
+  "fields": {
+    "columns": { "type": "array", "required": true, "minItems": 2, "maxItems": 4, "itemMaxWords": 6 },
+    "rows": { "type": "array", "required": true, "minItems": 1, "maxItems": 5, "cellMaxWords": 18 }
+  },
+  "layoutLimits": {
+    "minFontSize": 20,
+    "maxRows": 5,
+    "maxColumns": 4,
+    "allowImages": false,
+    "allowTables": true,
+    "allowNestedComponents": false
+  },
+  "exportRisk": "low"
+}

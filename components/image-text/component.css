@@ -1,0 +1,73 @@
+.component-image-text {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 36px;
+  height: 100%;
+}
+
+.component-image-text-right {
+  grid-template-columns: 1.05fr 0.95fr;
+}
+
+.component-image-text-right figure {
+  order: 2;
+}
+
+.component-image-text figure,
+.component-image-text .text-panel {
+  min-width: 0;
+  margin: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.component-image-text figure {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 26px;
+}
+
+.component-image-text img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #EEF6F6;
+}
+
+.component-image-text figcaption {
+  margin-top: 14px;
+  color: var(--color-text-secondary);
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.component-image-text .text-panel {
+  padding: 42px;
+}
+
+.component-image-text h2 {
+  margin: 0 0 22px;
+  color: var(--color-primary);
+  font-size: 36px;
+  line-height: 1.18;
+}
+
+.component-image-text p {
+  margin: 0 0 24px;
+  color: var(--color-text);
+  font-size: 26px;
+  line-height: 1.42;
+}
+
+.component-image-text ul {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding-left: 24px;
+}
+
+.component-image-text li {
+  color: var(--color-text);
+  font-size: 23px;
+  line-height: 1.34;
+}

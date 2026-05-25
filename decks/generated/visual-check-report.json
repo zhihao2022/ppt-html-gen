@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-25T03:58:52.789Z",
+  "generatedAt": "2026-05-25T04:04:24.644Z",
   "deckHtml": "decks/generated/deck.html",
   "summary": {
     "status": "pass",
@@ -12,33 +12,33 @@
     {
       "name": "overflow",
       "status": "pass",
-      "message": "No overflow found in 2 content slide(s).",
+      "message": "No overflow found in 5 content slide(s).",
       "details": {
-        "contentSlideCount": 2,
+        "contentSlideCount": 5,
         "issues": []
       },
-      "checkedAt": "2026-05-25T03:58:48.877Z"
+      "checkedAt": "2026-05-25T04:04:20.634Z"
     },
     {
       "name": "layout",
       "status": "pass",
-      "message": "6 slide(s) match the layout contract.",
+      "message": "9 slide(s) match the layout contract.",
       "details": {
-        "expectedSlideCount": 6,
-        "actualSlideCount": 6,
+        "expectedSlideCount": 9,
+        "actualSlideCount": 9,
         "issues": []
       },
-      "checkedAt": "2026-05-25T03:58:50.579Z"
+      "checkedAt": "2026-05-25T04:04:22.444Z"
     },
     {
       "name": "assets",
       "status": "pass",
-      "message": "0 image(s) checked; no asset/export risks found.",
+      "message": "1 image(s) checked; no asset/export risks found.",
       "details": {
-        "imageCount": 0,
+        "imageCount": 1,
         "issues": []
       },
-      "checkedAt": "2026-05-25T03:58:52.787Z"
+      "checkedAt": "2026-05-25T04:04:24.643Z"
     }
   ]
 }

@@ -1,0 +1,28 @@
+{
+  "name": "three-cards",
+  "displayName": "Three Cards",
+  "category": "card",
+  "description": "用于展示三类方法、三种攻击、三个贡献点或三个挑战。",
+  "suitableFor": ["taxonomy", "three methods", "three challenges", "three examples"],
+  "fields": {
+    "cards": {
+      "type": "array",
+      "required": true,
+      "minItems": 3,
+      "maxItems": 3,
+      "itemFields": {
+        "title": { "type": "string", "required": true, "maxWords": 8 },
+        "body": { "type": "string", "required": true, "maxWords": 40 },
+        "icon": { "type": "string", "required": false }
+      }
+    }
+  },
+  "layoutLimits": {
+    "minFontSize": 24,
+    "maxPanels": 3,
+    "allowImages": false,
+    "allowTables": false,
+    "allowNestedComponents": false
+  },
+  "exportRisk": "low"
+}

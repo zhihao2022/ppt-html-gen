@@ -1,0 +1,41 @@
+.component-three-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  height: 100%;
+}
+
+.component-three-cards .card {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 22px;
+  min-width: 0;
+  padding: 38px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.component-three-cards .card-index {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  background: var(--color-primary);
+  color: #FFFFFF;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.component-three-cards h2 {
+  margin: 0;
+  color: var(--color-primary);
+  font-size: 34px;
+  line-height: 1.18;
+}
+
+.component-three-cards p {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 25px;
+  line-height: 1.42;
+}

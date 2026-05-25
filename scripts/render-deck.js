@@ -3,6 +3,7 @@ const path = require("path");
 
 const rootDir = path.resolve(__dirname, "..");
 const templateDir = path.join(rootDir, "templates");
+const componentDir = path.join(rootDir, "components");
 const dataPath = path.join(rootDir, "decks", "generated", "deck.data.json");
 const outputPath = path.join(rootDir, "decks", "generated", "deck.html");
 
@@ -59,23 +60,122 @@ function renderReferences(references = []) {
     .join("\n");
 }
 
+function renderCards(cards = []) {
+  return cards
+    .slice(0, 3)
+    .map((card, index) => [
+      '<article class="card">',
+      `  <div class="card-index">${String(index + 1).padStart(2, "0")}</div>`,
+      `  <h2>${escapeHtml(card.title)}</h2>`,
+      `  <p>${escapeHtml(card.body)}</p>`,
+      "</article>"
+    ].join("\n"))
+    .join("\n");
+}
+
+function renderHeaderCells(columns = []) {
+  return columns.map((column) => `<th>${escapeHtml(column)}</th>`).join("");
+}
+
+function renderBodyRows(rows = []) {
+  return rows
+    .map((row) => {
+      const cells = Array.isArray(row) ? row : [];
+      return `<tr>${cells.map((cell) => `<td>${escapeHtml(cell)}</td>`).join("")}</tr>`;
+    })
+    .join("\n");
+}
+
+function renderPipelineSteps(steps = []) {
+  return steps
+    .slice(0, 6)
+    .map((step, index) => [
+      '<article class="step">',
+      `  <div class="step-index">${String(index + 1).padStart(2, "0")}</div>`,
+      `  <h2>${escapeHtml(step.title)}</h2>`,
+      `  <p>${escapeHtml(step.description)}</p>`,
+      "</article>"
+    ].join("\n"))
+    .join("\n");
+}
+
+function renderBulletItems(items = []) {
+  return items.map((item) => `<li>${escapeHtml(item)}</li>`).join("\n");
+}
+
+function componentValues(layout, content) {
+  if (layout === "two-column-text") {
+    return {
+      leftTitle: escapeHtml(content.leftTitle),
+      leftBody: escapeHtml(content.leftBody),
+      rightTitle: escapeHtml(content.rightTitle),
+      rightBody: escapeHtml(content.rightBody)
+    };
+  }
+
+  if (layout === "three-cards") {
+    return {
+      cards: renderCards(content.cards)
+    };
+  }
+
+  if (layout === "comparison-table") {
+    return {
+      headerCells: renderHeaderCells(content.columns),
+      bodyRows: renderBodyRows(content.rows)
+    };
+  }
+
+  if (layout === "pipeline-flow") {
+    const steps = Array.isArray(content.steps) ? content.steps : [];
+    return {
+      steps: renderPipelineSteps(steps),
+      pipelineCount: String(Math.max(steps.length, 1))
+    };
+  }
+
+  if (layout === "image-text") {
+    return {
+      image: escapeHtml(content.image),
+      imageAlt: escapeHtml(content.imageAlt || content.title),
+      imageCaption: escapeHtml(content.imageCaption),
+      imagePosition: escapeHtml(content.imagePosition || "left"),
+      textTitle: escapeHtml(content.title),
+      body: escapeHtml(content.body),
+      bullets: renderBulletItems(content.bullets)
+    };
+  }
+
+  return {};
+}
+
+function renderComponent(layout, content) {
+  const templatePath = path.join(componentDir, layout, "component.html");
+
+  if (!fs.existsSync(templatePath)) {
+    return null;
+  }
+
+  const rendered = renderTemplate(readText(templatePath), componentValues(layout, content));
+
+  if (layout === "pipeline-flow") {
+    const steps = Array.isArray(content.steps) ? content.steps : [];
+    return rendered.replace(
+      'class="component component-pipeline-flow"',
+      `class="component component-pipeline-flow" style="--pipeline-count: ${Math.max(steps.length, 1)}"`
+    );
+  }
+
+  return rendered;
+}
+
 function renderContent(slide) {
   const layout = slide.layout || "bullet-list";
   const content = slide.content || {};
 
-  if (layout === "two-column-text") {
-    return [
-      '<div class="component component-two-column-text">',
-      '  <div class="panel">',
-      `    <h2>${escapeHtml(content.leftTitle)}</h2>`,
-      `    <p>${escapeHtml(content.leftBody)}</p>`,
-      "  </div>",
-      '  <div class="panel">',
-      `    <h2>${escapeHtml(content.rightTitle)}</h2>`,
-      `    <p>${escapeHtml(content.rightBody)}</p>`,
-      "  </div>",
-      "</div>"
-    ].join("\n");
+  const componentHtml = renderComponent(layout, content);
+  if (componentHtml) {
+    return componentHtml;
   }
 
   if (layout === "callout") {
@@ -90,7 +190,7 @@ function renderContent(slide) {
   return [
     '<div class="component component-bullet-list">',
     "  <ul>",
-    ...bullets.map((bullet) => `    <li>${escapeHtml(bullet)}</li>`),
+    ...bullets.map((bullet) => `    ${renderBulletItems([bullet])}`),
     "  </ul>",
     "</div>"
   ].join("\n");

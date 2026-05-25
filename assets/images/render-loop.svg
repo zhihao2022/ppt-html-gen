@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" role="img" aria-label="HTML deck render loop diagram">
+  <rect width="960" height="640" fill="#F8FAFC"/>
+  <rect x="80" y="130" width="210" height="130" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="4"/>
+  <rect x="375" y="130" width="210" height="130" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="4"/>
+  <rect x="670" y="130" width="210" height="130" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="4"/>
+  <rect x="238" y="188" width="84" height="14" fill="#00A6A6"/>
+  <polygon points="322,195 294,176 294,214" fill="#00A6A6"/>
+  <rect x="533" y="188" width="84" height="14" fill="#00A6A6"/>
+  <polygon points="617,195 589,176 589,214" fill="#00A6A6"/>
+  <text x="185" y="190" font-family="Arial, sans-serif" font-size="30" font-weight="700" text-anchor="middle" fill="#005082">Data</text>
+  <text x="480" y="190" font-family="Arial, sans-serif" font-size="30" font-weight="700" text-anchor="middle" fill="#005082">Render</text>
+  <text x="775" y="190" font-family="Arial, sans-serif" font-size="30" font-weight="700" text-anchor="middle" fill="#005082">HTML</text>
+  <rect x="160" y="380" width="640" height="86" fill="#005082"/>
+  <text x="480" y="434" font-family="Arial, sans-serif" font-size="32" font-weight="700" text-anchor="middle" fill="#FFFFFF">Browser check and PPTX export</text>
+</svg>

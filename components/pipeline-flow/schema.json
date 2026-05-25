@@ -1,0 +1,27 @@
+{
+  "name": "pipeline-flow",
+  "displayName": "Pipeline Flow",
+  "category": "flow",
+  "description": "用于展示算法流程、系统流程、任务执行链或数据处理流程。",
+  "suitableFor": ["algorithm pipeline", "system workflow", "process"],
+  "fields": {
+    "steps": {
+      "type": "array",
+      "required": true,
+      "minItems": 3,
+      "maxItems": 6,
+      "itemFields": {
+        "title": { "type": "string", "required": true, "maxWords": 6 },
+        "description": { "type": "string", "required": true, "maxWords": 20 }
+      }
+    }
+  },
+  "layoutLimits": {
+    "minFontSize": 20,
+    "maxSteps": 6,
+    "allowImages": false,
+    "allowTables": false,
+    "allowNestedComponents": false
+  },
+  "exportRisk": "medium"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "image-text",
+  "displayName": "Image Text",
+  "category": "media",
+  "description": "用于展示本地图片及其解释文字。",
+  "suitableFor": ["figure explanation", "screenshot analysis", "result interpretation"],
+  "fields": {
+    "image": { "type": "string", "required": true },
+    "imageAlt": { "type": "string", "required": false, "maxWords": 10 },
+    "imageCaption": { "type": "string", "required": false, "maxWords": 18 },
+    "imagePosition": { "type": "enum", "required": false, "values": ["left", "right"] },
+    "title": { "type": "string", "required": true, "maxWords": 8 },
+    "body": { "type": "string", "required": true, "maxWords": 45 },
+    "bullets": { "type": "array", "required": false, "maxItems": 4, "itemMaxWords": 16 }
+  },
+  "layoutLimits": {
+    "minFontSize": 20,
+    "allowImages": true,
+    "allowTables": false,
+    "allowNestedComponents": false
+  },
+  "exportRisk": "low"
+}

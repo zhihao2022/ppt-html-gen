@@ -29,25 +29,25 @@
 <section class="slide slide-agenda" data-slide-type="agenda" data-slide-id="slide-002">
   <header class="slide-header">
     <div class="slide-kicker">Contents</div>
-    <h1 class="slide-title">第一阶段覆盖范围</h1>
+    <h1 class="slide-title">第三阶段覆盖范围</h1>
   </header>
   <main class="agenda-body">
     <ol class="agenda-list">
       <li>
   <span class="agenda-index">01</span>
-  <span class="agenda-text">建立项目骨架和配置文件</span>
+  <span class="agenda-text">建立首批可复用组件目录</span>
 </li>
 <li>
   <span class="agenda-index">02</span>
-  <span class="agenda-text">固化五类基础 slide 模板</span>
+  <span class="agenda-text">让 renderer 按 layout 读取组件模板</span>
 </li>
 <li>
   <span class="agenda-index">03</span>
-  <span class="agenda-text">使用 deck.data.json 作为渲染输入</span>
+  <span class="agenda-text">用 schema 限制组件输入容量</span>
 </li>
 <li>
   <span class="agenda-index">04</span>
-  <span class="agenda-text">生成可在浏览器检查的 deck.html</span>
+  <span class="agenda-text">为组件生成 preview.png 预览图</span>
 </li>
     </ol>
   </main>
@@ -61,9 +61,9 @@
 <section class="slide slide-section" data-slide-type="section" data-slide-id="slide-003">
   <div class="section-index">01</div>
   <div class="section-content">
-    <p class="section-kicker">Workflow</p>
-    <h1 class="section-title">最小渲染闭环</h1>
-    <p class="section-subtitle">先让数据、模板、样式和 HTML 输出稳定，再继续扩展检查、组件和导出。</p>
+    <p class="section-kicker">Component Library</p>
+    <h1 class="section-title">组件库接入</h1>
+    <p class="section-subtitle">正文页优先选择稳定组件，减少每次自由排版带来的溢出和导出风险。</p>
   </div>
   <footer class="slide-footer">
     <span>HTML-to-PPTX Deck Generator</span>
@@ -74,24 +74,24 @@
 
 <section class="slide slide-content" data-slide-type="content" data-slide-id="slide-004">
   <header class="slide-header">
-    <div class="slide-kicker">Workflow</div>
-    <h1 class="slide-title">Renderer 只负责组合稳定资产</h1>
+    <div class="slide-kicker">Component Library</div>
+    <h1 class="slide-title">Two Column Text：并列解释</h1>
   </header>
   <main class="slide-body" data-safe-area>
     <div class="component component-two-column-text">
   <div class="panel">
-    <h2>输入数据</h2>
-    <p>deck.data.json 描述 deck 元信息、页面类型、标题、正文结构和参考信息，不承载复杂 CSS。</p>
+    <h2>Stable Assets</h2>
+    <p>Templates and component CSS are reusable assets. Codex should fill data into them instead of rewriting visual structure every time.</p>
   </div>
   <div class="panel">
-    <h2>HTML 输出</h2>
-    <p>render-deck.js 读取模板和样式，将每页渲染为固定尺寸的 section.slide。</p>
+    <h2>Editable Output</h2>
+    <p>The generated HTML keeps text, table cells, simple shapes and images as separate DOM nodes for later PPTX export.</p>
   </div>
 </div>
+
   </main>
   <div class="slide-references">
-    <div>docs/00_IMPLEMENTATION_PLAN.md</div>
-<div>docs/01_SKILL_SPEC.md</div>
+    <div>components/two-column-text/schema.json</div>
   </div>
   <footer class="slide-footer">
     <span>HTML-to-PPTX Deck Generator</span>
@@ -102,21 +102,31 @@
 
 <section class="slide slide-content" data-slide-type="content" data-slide-id="slide-005">
   <header class="slide-header">
-    <div class="slide-kicker">Data Contract</div>
-    <h1 class="slide-title">第一阶段必须稳定的约束</h1>
+    <div class="slide-kicker">Component Library</div>
+    <h1 class="slide-title">Three Cards：三项分类</h1>
   </header>
   <main class="slide-body" data-safe-area>
-    <div class="component component-bullet-list">
-  <ul>
-    <li>每页都是 section.slide，尺寸固定为 1920px × 1080px。</li>
-    <li>每页必须带 data-slide-type 和 data-slide-id。</li>
-    <li>正文页必须包含带 data-safe-area 的 main.slide-body。</li>
-    <li>模板和组件使用主题变量，不在数据里硬编码复杂样式。</li>
-  </ul>
+    <div class="component component-three-cards">
+  <article class="card">
+  <div class="card-index">01</div>
+  <h2>Template</h2>
+  <p>Controls the fixed slide frame, title hierarchy, footer and safe area.</p>
+</article>
+<article class="card">
+  <div class="card-index">02</div>
+  <h2>Component</h2>
+  <p>Controls reusable content structure such as cards, tables, flows and image-text blocks.</p>
+</article>
+<article class="card">
+  <div class="card-index">03</div>
+  <h2>Data</h2>
+  <p>Provides titles, bullets, table rows, figure paths and references without complex CSS.</p>
+</article>
 </div>
+
   </main>
   <div class="slide-references">
-    <div>docs/02_TEMPLATE_SPEC.md</div>
+    <div>components/three-cards/schema.json</div>
   </div>
   <footer class="slide-footer">
     <span>HTML-to-PPTX Deck Generator</span>
@@ -125,11 +135,115 @@
 </section>
 
 
-<section class="slide slide-ending" data-slide-type="ending" data-slide-id="slide-006">
+<section class="slide slide-content" data-slide-type="content" data-slide-id="slide-006">
+  <header class="slide-header">
+    <div class="slide-kicker">Component Library</div>
+    <h1 class="slide-title">Comparison Table：能力对比</h1>
+  </header>
+  <main class="slide-body" data-safe-area>
+    <div class="component component-comparison-table">
+  <table>
+    <thead>
+      <tr><th>Asset</th><th>Responsibility</th><th>Editable</th><th>Risk</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Template</td><td>Fixed page frame</td><td>Partial</td><td>Low</td></tr>
+<tr><td>Component</td><td>Content layout</td><td>Yes</td><td>Low</td></tr>
+<tr><td>Image</td><td>Visual evidence</td><td>No</td><td>Medium</td></tr>
+<tr><td>Full screenshot</td><td>Fallback only</td><td>No</td><td>High</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  </main>
+  <div class="slide-references">
+    <div>components/comparison-table/schema.json</div>
+  </div>
+  <footer class="slide-footer">
+    <span>HTML-to-PPTX Deck Generator</span>
+    <span>06</span>
+  </footer>
+</section>
+
+
+<section class="slide slide-content" data-slide-type="content" data-slide-id="slide-007">
+  <header class="slide-header">
+    <div class="slide-kicker">Component Library</div>
+    <h1 class="slide-title">Pipeline Flow：渲染与检查链路</h1>
+  </header>
+  <main class="slide-body" data-safe-area>
+    <div class="component component-pipeline-flow" style="--pipeline-count: 4">
+  <article class="step">
+  <div class="step-index">01</div>
+  <h2>Plan</h2>
+  <p>Confirm page list, slide type, content source and component choice.</p>
+</article>
+<article class="step">
+  <div class="step-index">02</div>
+  <h2>Data</h2>
+  <p>Write deck.data.json with structure and content only.</p>
+</article>
+<article class="step">
+  <div class="step-index">03</div>
+  <h2>Render</h2>
+  <p>Combine templates, component HTML and theme CSS into deck.html.</p>
+</article>
+<article class="step">
+  <div class="step-index">04</div>
+  <h2>Check</h2>
+  <p>Run overflow, layout, asset and screenshot validation before export.</p>
+</article>
+</div>
+
+  </main>
+  <div class="slide-references">
+    <div>components/pipeline-flow/schema.json</div>
+  </div>
+  <footer class="slide-footer">
+    <span>HTML-to-PPTX Deck Generator</span>
+    <span>07</span>
+  </footer>
+</section>
+
+
+<section class="slide slide-content" data-slide-type="content" data-slide-id="slide-008">
+  <header class="slide-header">
+    <div class="slide-kicker">Component Library</div>
+    <h1 class="slide-title">Image Text：图片说明</h1>
+  </header>
+  <main class="slide-body" data-safe-area>
+    <div class="component component-image-text component-image-text-left">
+  <figure>
+    <img src="../../assets/images/render-loop.svg" alt="Render loop diagram" />
+    <figcaption>Local SVG asset used as a stable figure source.</figcaption>
+  </figure>
+  <div class="text-panel">
+    <h2>Figure plus explanation</h2>
+    <p>Image-text pages keep the figure and narrative separate, making the exported PPT easier to inspect and edit.</p>
+    <ul>
+      <li>Use local assets first.</li>
+<li>Keep captions short.</li>
+<li>Avoid cross-origin images.</li>
+    </ul>
+  </div>
+</div>
+
+  </main>
+  <div class="slide-references">
+    <div>components/image-text/schema.json</div>
+  </div>
+  <footer class="slide-footer">
+    <span>HTML-to-PPTX Deck Generator</span>
+    <span>08</span>
+  </footer>
+</section>
+
+
+<section class="slide slide-ending" data-slide-type="ending" data-slide-id="slide-009">
   <div class="ending-content">
     <p class="ending-kicker">Next</p>
-    <h1 class="ending-title">Ready for Checks</h1>
-    <p class="ending-subtitle">下一阶段接入 overflow、layout、assets 检查，再扩展组件库和导出脚本。</p>
+    <h1 class="ending-title">Ready for Export</h1>
+    <p class="ending-subtitle">下一阶段可以接入油猴脚本和 dom-to-pptx，验证 HTML 到 PPTX 的可编辑导出。</p>
   </div>
   <div class="ending-contact">
     Generated from decks/generated/deck.data.json

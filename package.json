@@ -6,12 +6,13 @@
   "scripts": {
     "render": "node scripts/render-deck.js",
     "serve": "node scripts/serve.js",
-    "check:syntax": "node --check scripts/render-deck.js && node --check scripts/check-overflow.js && node --check scripts/check-layout.js && node --check scripts/check-assets.js && node --check scripts/make-screenshots.js && node --check scripts/serve.js",
+    "check:syntax": "node --check scripts/render-deck.js && node --check scripts/check-overflow.js && node --check scripts/check-layout.js && node --check scripts/check-assets.js && node --check scripts/make-screenshots.js && node --check scripts/make-component-previews.js && node --check scripts/serve.js",
     "check:overflow": "node scripts/check-overflow.js",
     "check:layout": "node scripts/check-layout.js",
     "check:assets": "node scripts/check-assets.js",
     "check": "npm run render && npm run check:overflow && npm run check:layout && npm run check:assets",
-    "screenshots": "node scripts/make-screenshots.js"
+    "screenshots": "node scripts/make-screenshots.js",
+    "component-previews": "node scripts/make-component-previews.js"
   },
   "engines": {
     "node": ">=18"
