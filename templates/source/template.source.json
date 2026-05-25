@@ -1,0 +1,18 @@
+{
+  "templateName": "minimal-academic-blue",
+  "sourceStatus": "html-native",
+  "lastUpdated": "2026-05-25",
+  "sourceFiles": [],
+  "expectedScreenshotPattern": "page-XX-{slideType}.png",
+  "slideTypeScreenshots": {
+    "cover": null,
+    "agenda": null,
+    "section": null,
+    "content": null,
+    "ending": null
+  },
+  "notes": [
+    "Current template is authored directly in HTML/CSS.",
+    "When importing a user PPTX/PDF template, archive originals and derived screenshots here."
+  ]
+}

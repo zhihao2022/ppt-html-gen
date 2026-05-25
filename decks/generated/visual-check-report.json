@@ -1,14 +1,32 @@
 {
-  "generatedAt": "2026-05-25T04:04:24.644Z",
+  "generatedAt": "2026-05-25T04:08:11.899Z",
   "deckHtml": "decks/generated/deck.html",
   "summary": {
     "status": "pass",
-    "totalChecks": 3,
-    "passed": 3,
+    "totalChecks": 4,
+    "passed": 4,
     "failed": 0,
     "warnings": 0
   },
   "checks": [
+    {
+      "name": "template",
+      "status": "pass",
+      "message": "5 slide template(s) match the template contract.",
+      "details": {
+        "templateName": "minimal-academic-blue",
+        "version": "0.1.0",
+        "requiredSlideTypes": [
+          "cover",
+          "agenda",
+          "section",
+          "content",
+          "ending"
+        ],
+        "issues": []
+      },
+      "checkedAt": "2026-05-25T04:08:05.497Z"
+    },
     {
       "name": "overflow",
       "status": "pass",
@@ -17,7 +35,7 @@
         "contentSlideCount": 5,
         "issues": []
       },
-      "checkedAt": "2026-05-25T04:04:20.634Z"
+      "checkedAt": "2026-05-25T04:08:07.705Z"
     },
     {
       "name": "layout",
@@ -28,7 +46,7 @@
         "actualSlideCount": 9,
         "issues": []
       },
-      "checkedAt": "2026-05-25T04:04:22.444Z"
+      "checkedAt": "2026-05-25T04:08:09.648Z"
     },
     {
       "name": "assets",
@@ -38,7 +56,7 @@
         "imageCount": 1,
         "issues": []
       },
-      "checkedAt": "2026-05-25T04:04:24.643Z"
+      "checkedAt": "2026-05-25T04:08:11.898Z"
     }
   ]
 }

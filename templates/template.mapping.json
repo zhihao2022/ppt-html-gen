@@ -1,0 +1,51 @@
+{
+  "templateName": "minimal-academic-blue",
+  "version": "0.1.0",
+  "slideSize": {
+    "width": 1920,
+    "height": 1080
+  },
+  "slideTypes": {
+    "cover": {
+      "templateFile": "templates/cover.html",
+      "sourceScreenshot": null,
+      "fixedElements": ["cover-bg", "cover-content", "cover-meta"],
+      "editableFields": ["kicker", "title", "subtitle", "author", "date"],
+      "safeArea": null
+    },
+    "agenda": {
+      "templateFile": "templates/agenda.html",
+      "sourceScreenshot": null,
+      "fixedElements": ["slide-header", "agenda-body", "slide-footer"],
+      "editableFields": ["kicker", "title", "items"],
+      "safeArea": null
+    },
+    "section": {
+      "templateFile": "templates/section.html",
+      "sourceScreenshot": null,
+      "fixedElements": ["section-index", "section-content", "slide-footer"],
+      "editableFields": ["sectionNumber", "kicker", "title", "subtitle"],
+      "safeArea": null
+    },
+    "content": {
+      "templateFile": "templates/content.html",
+      "sourceScreenshot": null,
+      "fixedElements": ["slide-header", "slide-body", "slide-references", "slide-footer"],
+      "editableFields": ["section", "title", "layout", "content", "references"],
+      "safeArea": {
+        "selector": "[data-safe-area]",
+        "x": 96,
+        "y": 232,
+        "width": 1728,
+        "height": 704
+      }
+    },
+    "ending": {
+      "templateFile": "templates/ending.html",
+      "sourceScreenshot": null,
+      "fixedElements": ["ending-content", "ending-contact"],
+      "editableFields": ["kicker", "title", "subtitle", "contact"],
+      "safeArea": null
+    }
+  }
+}
