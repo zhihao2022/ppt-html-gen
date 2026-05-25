@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-25T04:08:11.899Z",
+  "generatedAt": "2026-05-25T04:15:09.856Z",
   "deckHtml": "decks/generated/deck.html",
   "summary": {
     "status": "pass",
@@ -25,7 +25,7 @@
         ],
         "issues": []
       },
-      "checkedAt": "2026-05-25T04:08:05.497Z"
+      "checkedAt": "2026-05-25T04:15:03.742Z"
     },
     {
       "name": "overflow",
@@ -35,7 +35,7 @@
         "contentSlideCount": 5,
         "issues": []
       },
-      "checkedAt": "2026-05-25T04:08:07.705Z"
+      "checkedAt": "2026-05-25T04:15:05.941Z"
     },
     {
       "name": "layout",
@@ -46,7 +46,7 @@
         "actualSlideCount": 9,
         "issues": []
       },
-      "checkedAt": "2026-05-25T04:08:09.648Z"
+      "checkedAt": "2026-05-25T04:15:07.642Z"
     },
     {
       "name": "assets",
@@ -56,7 +56,7 @@
         "imageCount": 1,
         "issues": []
       },
-      "checkedAt": "2026-05-25T04:08:11.898Z"
+      "checkedAt": "2026-05-25T04:15:09.855Z"
     }
   ]
 }

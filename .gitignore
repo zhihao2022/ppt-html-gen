@@ -2,6 +2,7 @@ node_modules/
 .env
 .DS_Store
 Thumbs.db
+tmp/
 decks/exports/*.pptx
 decks/generated/screenshots/*
 !decks/generated/screenshots/.gitkeep
