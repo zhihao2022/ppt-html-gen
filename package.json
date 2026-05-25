@@ -4,9 +4,11 @@
   "private": true,
   "type": "commonjs",
   "scripts": {
+    "postinstall": "node scripts/sync-vendor.js",
+    "sync:vendor": "node scripts/sync-vendor.js",
     "render": "node scripts/render-deck.js",
     "serve": "node scripts/serve.js",
-    "check:syntax": "node --check scripts/render-deck.js && node --check scripts/check-template.js && node --check scripts/check-overflow.js && node --check scripts/check-layout.js && node --check scripts/check-assets.js && node --check scripts/check-export-readiness.js && node --check scripts/make-screenshots.js && node --check scripts/make-component-previews.js && node --check scripts/serve.js",
+    "check:syntax": "node --check scripts/render-deck.js && node --check scripts/sync-vendor.js && node --check scripts/check-template.js && node --check scripts/check-overflow.js && node --check scripts/check-layout.js && node --check scripts/check-assets.js && node --check scripts/check-export-readiness.js && node --check scripts/make-screenshots.js && node --check scripts/make-component-previews.js && node --check scripts/serve.js",
     "check:template": "node scripts/check-template.js",
     "check:overflow": "node scripts/check-overflow.js",
     "check:layout": "node scripts/check-layout.js",
@@ -21,5 +23,8 @@
   },
   "devDependencies": {
     "playwright": "^1.60.0"
+  },
+  "dependencies": {
+    "dom-to-pptx": "^1.1.9"
   }
 }

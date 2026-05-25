@@ -5,6 +5,7 @@
 Run:
 
 ```bash
+npm.cmd run sync:vendor
 npm.cmd run check:syntax
 npm.cmd run check
 ```
@@ -53,6 +54,7 @@ The generated HTML is ready for manual DOM-to-PPTX export when:
 - slide size is `1920 × 1080`
 - images are loaded and local
 - no `iframe`, `canvas`, `video`, `foreignObject`, complex filters, animation, or remote images are required
+- `window.domToPptx.exportToPptx` or an equivalent exporter is available in the rendered page
 - `npm.cmd run check:export` passes
 
 The userscript should export only:

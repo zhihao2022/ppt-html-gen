@@ -16,7 +16,35 @@ Array.from(document.querySelectorAll(".slide"))
 configs/export.config.json
 scripts/check-export-readiness.js
 userscript/export-html-to-pptx.user.js
+vendor/dom-to-pptx/dom-to-pptx.bundle.js
 decks/exports/
+```
+
+## Local Exporter Bundle
+
+Install dependencies and sync the browser bundle:
+
+```bash
+npm.cmd install
+npm.cmd run sync:vendor
+```
+
+The bundle is copied from:
+
+```text
+node_modules/dom-to-pptx/dist/dom-to-pptx.bundle.js
+```
+
+to:
+
+```text
+vendor/dom-to-pptx/dom-to-pptx.bundle.js
+```
+
+`templates/base.html` loads this script, so rendered decks expose:
+
+```js
+window.domToPptx.exportToPptx
 ```
 
 ## Export Readiness
@@ -41,6 +69,7 @@ The export readiness check verifies:
 - no slide scroll overflow
 - no high-risk export elements such as `video`, `iframe`, `canvas`, or `foreignObject`
 - remote images are flagged
+- a DOM-to-PPTX exporter exists on `window`
 
 ## Userscript
 
@@ -58,7 +87,7 @@ http://localhost:4173/
 file:///*
 ```
 
-It expects the page to provide one of:
+It expects the rendered page to provide one of:
 
 ```js
 window.domToPptx.exportToPptx

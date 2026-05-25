@@ -22,6 +22,7 @@
 
 ```bash
 npm.cmd install
+npm.cmd run sync:vendor
 npm.cmd run render
 npm.cmd run check
 npm.cmd run serve
@@ -77,6 +78,7 @@ userscript + dom-to-pptx export
 | 命令 | 作用 |
 |---|---|
 | `npm.cmd run render` | 根据 `deck.data.json` 生成 `deck.html` |
+| `npm.cmd run sync:vendor` | 同步 `dom-to-pptx` 浏览器 bundle 到 `vendor/` |
 | `npm.cmd run check` | 运行完整检查 |
 | `npm.cmd run check:template` | 检查模板合同 |
 | `npm.cmd run check:overflow` | 检查 safe area 溢出 |
@@ -253,6 +255,18 @@ templates/template.analysis.md
 npm.cmd run check:export
 ```
 
+本项目会把 `dom-to-pptx` 的浏览器 bundle 同步到：
+
+```text
+vendor/dom-to-pptx/dom-to-pptx.bundle.js
+```
+
+`templates/base.html` 会自动加载这个本地脚本，因此重新运行 `npm.cmd run render` 后，生成的 `deck.html` 页面应提供：
+
+```js
+window.domToPptx.exportToPptx
+```
+
 油猴脚本：
 
 ```text
@@ -288,12 +302,12 @@ configs/export.config.json
 - 组件库和组件预览
 - overflow / layout / assets / export-readiness 检查
 - 本地预览服务
+- 本地 `dom-to-pptx` bundle 接入
 - 油猴导出辅助脚本
 - Codex Skill 元数据和引用文档
 
 待继续增强：
 
-- 直接集成 `dom-to-pptx` 依赖和可运行导出页面
 - 从 PPTX/PDF 自动提取模板截图和结构
 - 更丰富的组件库
 - 更严格的文本容量和 schema 校验

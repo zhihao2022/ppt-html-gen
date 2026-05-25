@@ -29,6 +29,19 @@ async function collectExportIssues(page, exportConfig) {
       });
     }
 
+    const exporterAvailable =
+      typeof window.domToPptx?.exportToPptx === "function" ||
+      typeof window.domToPptx?.export === "function" ||
+      typeof window.exportToPptx === "function";
+
+    if (!exporterAvailable) {
+      issues.push({
+        severity: "error",
+        kind: "missing-dom-to-pptx-exporter",
+        message: "No DOM-to-PPTX exporter found on window."
+      });
+    }
+
     for (const forbidden of config.excludedSelectors || []) {
       if (forbidden === slideSelector) {
         issues.push({
@@ -107,6 +120,7 @@ async function collectExportIssues(page, exportConfig) {
       layout: config.layout,
       svgAsVector: config.svgAsVector,
       autoEmbedFonts: config.autoEmbedFonts,
+      exporterAvailable,
       issues
     };
   }, exportConfig);
