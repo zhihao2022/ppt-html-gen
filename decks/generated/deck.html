@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTML-to-PPTX Deck Generator</title>
+  <link rel="stylesheet" href="../../styles/theme.css" />
+  <link rel="stylesheet" href="../../styles/layout.css" />
+  <link rel="stylesheet" href="../../styles/typography.css" />
+  <link rel="stylesheet" href="../../styles/components.css" />
+  <link rel="stylesheet" href="../../styles/export-safe.css" />
+</head>
+<body>
+  <div class="deck" data-deck-title="HTML-to-PPTX Deck Generator">
+    <section class="slide slide-cover" data-slide-type="cover" data-slide-id="slide-001">
+  <div class="cover-bg"></div>
+  <div class="cover-content">
+    <p class="cover-kicker">Minimal Loop</p>
+    <h1 class="cover-title">HTML-to-PPTX Deck Generator</h1>
+    <p class="cover-subtitle">用固定模板、结构化数据和浏览器预览建立第一版 PPT 生成闭环。</p>
+  </div>
+  <div class="cover-meta">
+    <span>Codex</span>
+    <span>2026-05-25</span>
+  </div>
+</section>
+
+
+<section class="slide slide-agenda" data-slide-type="agenda" data-slide-id="slide-002">
+  <header class="slide-header">
+    <div class="slide-kicker">Contents</div>
+    <h1 class="slide-title">第一阶段覆盖范围</h1>
+  </header>
+  <main class="agenda-body">
+    <ol class="agenda-list">
+      <li>
+  <span class="agenda-index">01</span>
+  <span class="agenda-text">建立项目骨架和配置文件</span>
+</li>
+<li>
+  <span class="agenda-index">02</span>
+  <span class="agenda-text">固化五类基础 slide 模板</span>
+</li>
+<li>
+  <span class="agenda-index">03</span>
+  <span class="agenda-text">使用 deck.data.json 作为渲染输入</span>
+</li>
+<li>
+  <span class="agenda-index">04</span>
+  <span class="agenda-text">生成可在浏览器检查的 deck.html</span>
+</li>
+    </ol>
+  </main>
+  <footer class="slide-footer">
+    <span>HTML-to-PPTX Deck Generator</span>
+    <span>02</span>
+  </footer>
+</section>
+
+
+<section class="slide slide-section" data-slide-type="section" data-slide-id="slide-003">
+  <div class="section-index">01</div>
+  <div class="section-content">
+    <p class="section-kicker">Workflow</p>
+    <h1 class="section-title">最小渲染闭环</h1>
+    <p class="section-subtitle">先让数据、模板、样式和 HTML 输出稳定，再继续扩展检查、组件和导出。</p>
+  </div>
+  <footer class="slide-footer">
+    <span>HTML-to-PPTX Deck Generator</span>
+    <span>03</span>
+  </footer>
+</section>
+
+
+<section class="slide slide-content" data-slide-type="content" data-slide-id="slide-004">
+  <header class="slide-header">
+    <div class="slide-kicker">Workflow</div>
+    <h1 class="slide-title">Renderer 只负责组合稳定资产</h1>
+  </header>
+  <main class="slide-body" data-safe-area>
+    <div class="component component-two-column-text">
+  <div class="panel">
+    <h2>输入数据</h2>
+    <p>deck.data.json 描述 deck 元信息、页面类型、标题、正文结构和参考信息，不承载复杂 CSS。</p>
+  </div>
+  <div class="panel">
+    <h2>HTML 输出</h2>
+    <p>render-deck.js 读取模板和样式，将每页渲染为固定尺寸的 section.slide。</p>
+  </div>
+</div>
+  </main>
+  <div class="slide-references">
+    <div>docs/00_IMPLEMENTATION_PLAN.md</div>
+<div>docs/01_SKILL_SPEC.md</div>
+  </div>
+  <footer class="slide-footer">
+    <span>HTML-to-PPTX Deck Generator</span>
+    <span>04</span>
+  </footer>
+</section>
+
+
+<section class="slide slide-content" data-slide-type="content" data-slide-id="slide-005">
+  <header class="slide-header">
+    <div class="slide-kicker">Data Contract</div>
+    <h1 class="slide-title">第一阶段必须稳定的约束</h1>
+  </header>
+  <main class="slide-body" data-safe-area>
+    <div class="component component-bullet-list">
+  <ul>
+    <li>每页都是 section.slide，尺寸固定为 1920px × 1080px。</li>
+    <li>每页必须带 data-slide-type 和 data-slide-id。</li>
+    <li>正文页必须包含带 data-safe-area 的 main.slide-body。</li>
+    <li>模板和组件使用主题变量，不在数据里硬编码复杂样式。</li>
+  </ul>
+</div>
+  </main>
+  <div class="slide-references">
+    <div>docs/02_TEMPLATE_SPEC.md</div>
+  </div>
+  <footer class="slide-footer">
+    <span>HTML-to-PPTX Deck Generator</span>
+    <span>05</span>
+  </footer>
+</section>
+
+
+<section class="slide slide-ending" data-slide-type="ending" data-slide-id="slide-006">
+  <div class="ending-content">
+    <p class="ending-kicker">Next</p>
+    <h1 class="ending-title">Ready for Checks</h1>
+    <p class="ending-subtitle">下一阶段接入 overflow、layout、assets 检查，再扩展组件库和导出脚本。</p>
+  </div>
+  <div class="ending-contact">
+    Generated from decks/generated/deck.data.json
+  </div>
+</section>
+
+  </div>
+</body>
+</html>

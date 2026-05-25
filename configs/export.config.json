@@ -1,0 +1,7 @@
+{
+  "fileName": "output.pptx",
+  "layout": "LAYOUT_16x9",
+  "svgAsVector": true,
+  "autoEmbedFonts": true,
+  "slideSelector": ".slide"
+}

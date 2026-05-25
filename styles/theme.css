@@ -1,0 +1,18 @@
+:root {
+  --color-bg: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-primary: #005082;
+  --color-secondary: #00A6A6;
+  --color-accent: #F59E0B;
+  --color-text: #0F172A;
+  --color-text-secondary: #475569;
+  --color-muted: #94A3B8;
+  --color-border: #CBD5E1;
+  --font-title: "Inter", "Microsoft YaHei", Arial, sans-serif;
+  --font-body: "Inter", "Microsoft YaHei", Arial, sans-serif;
+  --slide-w: 1920px;
+  --slide-h: 1080px;
+  --slide-pad-x: 96px;
+  --slide-pad-y: 72px;
+  --content-gap: 32px;
+}

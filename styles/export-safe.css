@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+.slide {
+  transform: none;
+  filter: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+svg {
+  display: block;
+}
+
+video,
+iframe,
+canvas {
+  display: none;
+}

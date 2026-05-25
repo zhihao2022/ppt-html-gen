@@ -1,0 +1,22 @@
+{
+  "components": [
+    {
+      "name": "bullet-list",
+      "path": "built-in",
+      "category": "text",
+      "description": "基础正文 bullet 列表。",
+      "bestFor": ["summary", "key points", "agenda detail"],
+      "maxContentDensity": "medium",
+      "exportRisk": "low"
+    },
+    {
+      "name": "two-column-text",
+      "path": "built-in",
+      "category": "text",
+      "description": "两个并列文本块。",
+      "bestFor": ["comparison", "parallel explanation", "problem-solution"],
+      "maxContentDensity": "medium",
+      "exportRisk": "low"
+    }
+  ]
+}

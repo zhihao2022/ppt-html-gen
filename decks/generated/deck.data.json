@@ -1,0 +1,78 @@
+{
+  "deck": {
+    "title": "HTML-to-PPTX Deck Generator",
+    "subtitle": "A minimal HTML rendering loop for editable PPT export",
+    "author": "Codex",
+    "date": "2026-05-25",
+    "language": "zh-CN"
+  },
+  "slides": [
+    {
+      "id": "slide-001",
+      "type": "cover",
+      "kicker": "Minimal Loop",
+      "title": "HTML-to-PPTX Deck Generator",
+      "subtitle": "用固定模板、结构化数据和浏览器预览建立第一版 PPT 生成闭环。",
+      "author": "Codex",
+      "date": "2026-05-25"
+    },
+    {
+      "id": "slide-002",
+      "type": "agenda",
+      "kicker": "Contents",
+      "title": "第一阶段覆盖范围",
+      "items": [
+        "建立项目骨架和配置文件",
+        "固化五类基础 slide 模板",
+        "使用 deck.data.json 作为渲染输入",
+        "生成可在浏览器检查的 deck.html"
+      ]
+    },
+    {
+      "id": "slide-003",
+      "type": "section",
+      "sectionNumber": "01",
+      "kicker": "Workflow",
+      "title": "最小渲染闭环",
+      "subtitle": "先让数据、模板、样式和 HTML 输出稳定，再继续扩展检查、组件和导出。"
+    },
+    {
+      "id": "slide-004",
+      "type": "content",
+      "section": "Workflow",
+      "title": "Renderer 只负责组合稳定资产",
+      "layout": "two-column-text",
+      "content": {
+        "leftTitle": "输入数据",
+        "leftBody": "deck.data.json 描述 deck 元信息、页面类型、标题、正文结构和参考信息，不承载复杂 CSS。",
+        "rightTitle": "HTML 输出",
+        "rightBody": "render-deck.js 读取模板和样式，将每页渲染为固定尺寸的 section.slide。"
+      },
+      "references": ["docs/00_IMPLEMENTATION_PLAN.md", "docs/01_SKILL_SPEC.md"]
+    },
+    {
+      "id": "slide-005",
+      "type": "content",
+      "section": "Data Contract",
+      "title": "第一阶段必须稳定的约束",
+      "layout": "bullet-list",
+      "content": {
+        "bullets": [
+          "每页都是 section.slide，尺寸固定为 1920px × 1080px。",
+          "每页必须带 data-slide-type 和 data-slide-id。",
+          "正文页必须包含带 data-safe-area 的 main.slide-body。",
+          "模板和组件使用主题变量，不在数据里硬编码复杂样式。"
+        ]
+      },
+      "references": ["docs/02_TEMPLATE_SPEC.md"]
+    },
+    {
+      "id": "slide-006",
+      "type": "ending",
+      "kicker": "Next",
+      "title": "Ready for Checks",
+      "subtitle": "下一阶段接入 overflow、layout、assets 检查，再扩展组件库和导出脚本。",
+      "contact": "Generated from decks/generated/deck.data.json"
+    }
+  ]
+}
