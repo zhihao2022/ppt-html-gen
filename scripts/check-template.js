@@ -2,13 +2,12 @@ const fs = require("fs");
 const path = require("path");
 const {
   rootDir,
-  readJson,
   writeCheckResult,
   printResult,
   failOnResult
 } = require("./lib/check-utils");
+const { loadTemplateRegistry, loadAllTemplateConfigs } = require("./lib/template-utils");
 
-const configPath = path.join(rootDir, "configs", "template.config.json");
 const requiredSlideTypes = ["cover", "agenda", "section", "content", "ending"];
 
 function readText(filePath) {
@@ -19,15 +18,17 @@ function hasPlaceholder(html, placeholder) {
   return html.includes(`{{${placeholder}}}`);
 }
 
-function collectIssues() {
+function validateTemplate(templateContext) {
   const issues = [];
-  const config = readJson(configPath);
+  const config = templateContext.config;
+  const templateName = config.templateName || templateContext.id;
 
   if (config.slideSize?.width !== 1920 || config.slideSize?.height !== 1080) {
     issues.push({
       severity: "error",
       kind: "invalid-slide-size-config",
-      message: "template.config.json slideSize must be 1920x1080."
+      templateName,
+      message: `${templateName} slideSize must be 1920x1080.`
     });
   }
 
@@ -35,6 +36,7 @@ function collectIssues() {
     issues.push({
       severity: "error",
       kind: "missing-source-dir",
+      templateName,
       message: "Template source directory is missing."
     });
   }
@@ -48,6 +50,7 @@ function collectIssues() {
       issues.push({
         severity: "error",
         kind: "missing-template-metadata",
+        templateName,
         file: metadataFile,
         message: `Required template metadata file is missing: ${metadataFile}`
       });
@@ -60,6 +63,7 @@ function collectIssues() {
       issues.push({
         severity: "error",
         kind: "missing-slide-type-config",
+        templateName,
         slideType: type,
         message: `Missing slide type config for ${type}.`
       });
@@ -71,6 +75,7 @@ function collectIssues() {
       issues.push({
         severity: "error",
         kind: "missing-template-file",
+        templateName,
         slideType: type,
         file: slideConfig.file,
         message: `Missing template file for ${type}.`
@@ -83,6 +88,7 @@ function collectIssues() {
       issues.push({
         severity: "error",
         kind: "missing-slide-class",
+        templateName,
         slideType: type,
         file: slideConfig.file,
         message: "Template must contain a .slide root element."
@@ -93,6 +99,7 @@ function collectIssues() {
       issues.push({
         severity: "error",
         kind: "invalid-slide-type-marker",
+        templateName,
         slideType: type,
         file: slideConfig.file,
         message: `Template must declare data-slide-type="${type}".`
@@ -104,6 +111,7 @@ function collectIssues() {
         issues.push({
           severity: "error",
           kind: "missing-placeholder",
+          templateName,
           slideType: type,
           file: slideConfig.file,
           placeholder,
@@ -117,6 +125,7 @@ function collectIssues() {
         issues.push({
           severity: "error",
           kind: "missing-safe-area",
+          templateName,
           slideType: type,
           file: slideConfig.file,
           message: "Content template must contain [data-safe-area]."
@@ -128,6 +137,7 @@ function collectIssues() {
         issues.push({
           severity: "error",
           kind: "invalid-safe-area-config",
+          templateName,
           slideType: type,
           message: "Content template safeArea config must include positive width and height."
         });
@@ -135,9 +145,27 @@ function collectIssues() {
     }
   }
 
+  return issues;
+}
+
+function collectIssues() {
+  const registry = loadTemplateRegistry();
+  const templateContexts = loadAllTemplateConfigs();
+  const issues = [];
+
+  for (const templateContext of templateContexts) {
+    issues.push(...validateTemplate(templateContext));
+  }
+
   return {
-    templateName: config.templateName,
-    version: config.version,
+    activeTemplate: registry.activeTemplate,
+    templateCount: templateContexts.length,
+    templates: templateContexts.map((context) => ({
+      id: context.id,
+      templateName: context.config.templateName,
+      version: context.config.version,
+      config: path.relative(rootDir, context.configPath).replace(/\\/g, "/")
+    })),
     requiredSlideTypes,
     issues
   };
@@ -151,7 +179,7 @@ function main() {
     status: hasErrors ? "fail" : "pass",
     message: hasErrors
       ? `${details.issues.length} template issue(s) found.`
-      : `${details.requiredSlideTypes.length} slide template(s) match the template contract.`,
+      : `${details.templateCount} registered template(s) match the template contract.`,
     details
   };
 

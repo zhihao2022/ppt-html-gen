@@ -1,0 +1,103 @@
+{
+  "templateName": "bit-template",
+  "displayName": "BIT Green Academic Template",
+  "version": "1.0.0",
+  "templateDir": "templates/bit-template",
+  "sourcePolicy": {
+    "sourceDir": "templates/bit-template/source",
+    "manifestFile": "templates/bit-template/source/template.source.json",
+    "acceptedSourceTypes": ["pptx", "pdf", "svg", "json", "md", "png", "jpg", "jpeg"],
+    "screenshotNaming": "page-XX-{slideType}.png",
+    "notes": "Adapted from user's BIT locked SVG/PPTX/PDF sources."
+  },
+  "styleLock": {
+    "colors": {
+      "background": "#FFFFFF",
+      "primary": "#005C30",
+      "accent": "#009944",
+      "secondaryAccent": "#A13F0B",
+      "text": "#057748",
+      "textSecondary": "#3F3F3F",
+      "border": "#A13F0B"
+    },
+    "fonts": {
+      "title": "Times New Roman, Microsoft YaHei, serif",
+      "body": "Times New Roman, Microsoft YaHei, serif"
+    },
+    "typography": {
+      "body": 28,
+      "title": 48,
+      "coverTitle": 59,
+      "subtitle": 35,
+      "annotation": 16
+    }
+  },
+  "templateContract": {
+    "mappingFile": "templates/bit-template/template.mapping.json",
+    "analysisFile": "templates/bit-template/template.analysis.md",
+    "sourceContractFile": "templates/bit-template/source/template_contract.json",
+    "lockedSlideTypes": ["cover", "agenda", "section", "content", "ending"],
+    "fixedElementPolicy": "Preserve BIT style lock and fixed template frame; generated deck data may only fill editable fields.",
+    "dynamicContentPolicy": "Content slides may place generated content only inside [data-safe-area]."
+  },
+  "slideSize": {
+    "width": 1920,
+    "height": 1080,
+    "aspectRatio": "16:9"
+  },
+  "slideTypes": {
+    "cover": {
+      "file": "templates/bit-template/cover.html",
+      "editableFields": ["kicker", "title", "subtitle", "author", "date"],
+      "requiredPlaceholders": ["slideId", "kicker", "title", "subtitle", "author", "date"],
+      "fixedElements": ["bit-cover-mark", "bit-cover-frame", "bit-cover-content", "bit-cover-meta"],
+      "dynamicRegions": ["bit-cover-content", "bit-cover-meta"],
+      "fixedLayout": true
+    },
+    "agenda": {
+      "file": "templates/bit-template/agenda.html",
+      "editableFields": ["title", "items"],
+      "requiredPlaceholders": ["slideId", "title", "items", "deckTitle", "pageNumber"],
+      "fixedElements": ["bit-header", "bit-toc-body", "bit-footer"],
+      "dynamicRegions": ["bit-toc-list"],
+      "fixedLayout": true,
+      "maxItems": 5,
+      "structuralSlots": {
+        "slotCount": 5,
+        "countMatchRequired": true,
+        "mismatchAction": "Use a free structural agenda page in BIT style."
+      }
+    },
+    "section": {
+      "file": "templates/bit-template/section.html",
+      "editableFields": ["sectionNumberPlain", "kicker", "title", "subtitle"],
+      "requiredPlaceholders": ["slideId", "sectionNumberPlain", "kicker", "title", "subtitle", "deckTitle", "pageNumber"],
+      "fixedElements": ["bit-section-number", "bit-section-content", "bit-footer"],
+      "dynamicRegions": ["bit-section-content"],
+      "fixedLayout": true,
+      "numberFormat": "plain_arabic_integer"
+    },
+    "content": {
+      "file": "templates/bit-template/content.html",
+      "editableFields": ["section", "title", "layout", "content", "references"],
+      "requiredPlaceholders": ["slideId", "section", "title", "content", "references", "deckTitle", "pageNumber"],
+      "fixedElements": ["bit-header", "bit-slide-body", "bit-references", "bit-footer"],
+      "dynamicRegions": ["bit-slide-body", "bit-references"],
+      "fixedLayout": false,
+      "safeArea": {
+        "x": 144,
+        "y": 156,
+        "width": 1632,
+        "height": 730
+      }
+    },
+    "ending": {
+      "file": "templates/bit-template/ending.html",
+      "editableFields": ["kicker", "title", "subtitle", "contact"],
+      "requiredPlaceholders": ["slideId", "kicker", "title", "subtitle", "contact"],
+      "fixedElements": ["bit-ending-panel", "bit-ending-contact"],
+      "dynamicRegions": ["bit-ending-panel", "bit-ending-contact"],
+      "fixedLayout": true
+    }
+  }
+}

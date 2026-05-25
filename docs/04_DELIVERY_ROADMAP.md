@@ -61,12 +61,12 @@ Phase 6：Codex skill 固化
 [ ] 创建 package.json
 [ ] 创建 configs/theme.config.json
 [ ] 创建 configs/template.config.json
-[ ] 创建 templates/base.html
-[ ] 创建 templates/cover.html
-[ ] 创建 templates/agenda.html
-[ ] 创建 templates/section.html
-[ ] 创建 templates/content.html
-[ ] 创建 templates/ending.html
+[ ] 创建 templates/<template-id>/base.html
+[ ] 创建 templates/<template-id>/cover.html
+[ ] 创建 templates/<template-id>/agenda.html
+[ ] 创建 templates/<template-id>/section.html
+[ ] 创建 templates/<template-id>/content.html
+[ ] 创建 templates/<template-id>/ending.html
 [ ] 创建 styles/theme.css
 [ ] 创建 styles/layout.css
 [ ] 创建 styles/typography.css
@@ -153,7 +153,7 @@ node scripts/make-screenshots.js
 第四轮处理模板接入：
 
 ```text
-[ ] 建立 templates/source/
+[ ] 建立 templates/<template-id>/source/
 [ ] 支持模板源文件归档
 [ ] 提供模板截图命名规范
 [ ] 根据 5 类 slide type 建立模板映射

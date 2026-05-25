@@ -40,7 +40,7 @@ Windows PowerShell 如果拦截 `npm.ps1` / `npx.ps1`，请使用 `npm.cmd` / `n
 
 这个仓库根目录就是 skill 目录。Codex 读取 [SKILL.md](./SKILL.md) 后，会按以下顺序工作：
 
-1. 读取 `configs/template.config.json` 和 `configs/component.registry.json`。
+1. 读取 `configs/template.registry.json`、当前模板配置和 `configs/component.registry.json`。
 2. 读取输入材料，例如 `decks/input/outline.md`、`decks/input/materials.md`。
 3. 先生成或更新 `decks/generated/deck.plan.md`，等待用户确认。
 4. 用户确认后生成 `decks/generated/deck.data.json`。
@@ -111,8 +111,8 @@ warnings = 0
 ├── AGENTS.md                        # 仓库内 Agent 协作约束
 ├── agents/openai.yaml               # skill UI 元数据
 ├── configs/                         # 模板、主题、组件、导出配置
-├── templates/                       # HTML slide 模板
-├── templates/source/                # 用户 PPTX/PDF/截图模板源文件归档
+├── templates/<template-id>/          # 每个模板一个子目录
+├── templates/<template-id>/source/   # 该模板的 PPTX/PDF/SVG/截图源文件归档
 ├── components/                      # 可复用正文组件
 ├── styles/                          # 全局 CSS
 ├── scripts/                         # 渲染、检查、截图、预览脚本
@@ -212,10 +212,10 @@ npm.cmd run check
 
 ## 模板接入
 
-用户提供的模板源文件放到：
+用户提供的模板源文件放到对应模板目录：
 
 ```text
-templates/source/
+templates/<template-id>/source/
 ```
 
 推荐命名：
@@ -230,13 +230,24 @@ page-04-content.png
 page-05-ending.png
 ```
 
-模板相关配置和说明：
+模板注册和配置：
 
 ```text
+configs/template.registry.json
 configs/template.config.json
-templates/source/template.source.json
-templates/template.mapping.json
-templates/template.analysis.md
+configs/theme.registry.json
+templates/<template-id>/template.config.json
+templates/<template-id>/theme.config.json
+templates/<template-id>/source/template.source.json
+templates/<template-id>/template.mapping.json
+templates/<template-id>/template.analysis.md
+```
+
+当前已注册模板：
+
+```text
+minimal-academic-blue
+bit-template
 ```
 
 模板接入原则：
@@ -261,7 +272,7 @@ npm.cmd run check:export
 vendor/dom-to-pptx/dom-to-pptx.bundle.js
 ```
 
-`templates/base.html` 会自动加载这个本地脚本，因此重新运行 `npm.cmd run render` 后，生成的 `deck.html` 页面应提供：
+`templates/<template-id>/base.html` 会自动加载这个本地脚本，因此重新运行 `npm.cmd run render` 后，生成的 `deck.html` 页面应提供：
 
 ```js
 window.domToPptx.exportToPptx

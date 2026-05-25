@@ -9,80 +9,82 @@
   <link rel="stylesheet" href="../../styles/typography.css" />
   <link rel="stylesheet" href="../../styles/components.css" />
   <link rel="stylesheet" href="../../styles/export-safe.css" />
+  <link rel="stylesheet" href="../../templates/bit-template/template.css" />
   <script src="../../vendor/dom-to-pptx/dom-to-pptx.bundle.js"></script>
 </head>
 <body>
-  <div class="deck" data-deck-title="Hello World PPT">
-    <section class="slide slide-cover" data-slide-type="cover" data-slide-id="slide-001">
-  <div class="cover-bg"></div>
-  <div class="cover-content">
-    <p class="cover-kicker">Pipeline Test</p>
-    <h1 class="cover-title">Hello World PPT</h1>
-    <p class="cover-subtitle">A five-slide smoke test for HTML rendering and PPTX export readiness.</p>
+  <div class="deck deck-bit-template" data-deck-title="Hello World PPT" data-template-id="bit-template">
+    <section class="slide slide-cover bit-slide bit-cover" data-slide-type="cover" data-slide-id="slide-001">
+  <div class="bit-cover-mark"></div>
+  <div class="bit-cover-frame"></div>
+  <div class="bit-cover-content">
+    <p class="bit-kicker">Pipeline Test</p>
+    <h1 class="bit-cover-title">Hello World PPT</h1>
+    <p class="bit-cover-subtitle">A five-slide smoke test for HTML rendering and PPTX export readiness.</p>
   </div>
-  <div class="cover-meta">
+  <div class="bit-cover-meta">
     <span>Codex</span>
     <span>2026-05-25</span>
   </div>
 </section>
 
 
-<section class="slide slide-agenda" data-slide-type="agenda" data-slide-id="slide-002">
-  <header class="slide-header">
-    <div class="slide-kicker">Contents</div>
-    <h1 class="slide-title">Test Pages</h1>
+<section class="slide slide-agenda bit-slide bit-agenda" data-slide-type="agenda" data-slide-id="slide-002">
+  <header class="bit-header">
+    <div class="bit-page-mark">目录</div>
+    <h1 class="bit-slide-title">Test Pages</h1>
   </header>
-  <main class="agenda-body">
-    <ol class="agenda-list">
+  <main class="bit-toc-body">
+    <ol class="bit-toc-list">
       <li>
-  <span class="agenda-index">01</span>
+  <span class="agenda-index">1</span>
   <span class="agenda-text">Open with a clean cover slide</span>
 </li>
 <li>
-  <span class="agenda-index">02</span>
+  <span class="agenda-index">2</span>
   <span class="agenda-text">Render a simple agenda</span>
 </li>
 <li>
-  <span class="agenda-index">03</span>
+  <span class="agenda-index">3</span>
   <span class="agenda-text">Check a section divider</span>
 </li>
 <li>
-  <span class="agenda-index">04</span>
+  <span class="agenda-index">4</span>
   <span class="agenda-text">Validate one reusable content component</span>
 </li>
 <li>
-  <span class="agenda-index">05</span>
+  <span class="agenda-index">5</span>
   <span class="agenda-text">Close with an ending slide</span>
 </li>
     </ol>
   </main>
-  <footer class="slide-footer">
+  <footer class="bit-footer">
     <span>Hello World PPT</span>
     <span>02</span>
   </footer>
 </section>
 
 
-<section class="slide slide-section" data-slide-type="section" data-slide-id="slide-003">
-  <div class="section-index">01</div>
-  <div class="section-content">
-    <p class="section-kicker">Demo</p>
-    <h1 class="section-title">Say Hello</h1>
-    <p class="section-subtitle">This section keeps the content small so layout checks can focus on the rendering path.</p>
+<section class="slide slide-section bit-slide bit-section" data-slide-type="section" data-slide-id="slide-003">
+  <div class="bit-section-number">1</div>
+  <div class="bit-section-content">
+    <p class="bit-kicker">Demo</p>
+    <h1 class="bit-section-title">Say Hello</h1>
+    <p class="bit-section-subtitle">This section keeps the content small so layout checks can focus on the rendering path.</p>
   </div>
-  <footer class="slide-footer">
+  <footer class="bit-footer bit-footer-inverse">
     <span>Hello World PPT</span>
     <span>03</span>
   </footer>
 </section>
 
 
-<section class="slide slide-content" data-slide-type="content" data-slide-id="slide-004">
-  <header class="slide-header">
-    <div class="slide-kicker">Demo</div>
-    <h1 class="slide-title">Hello World Works</h1>
+<section class="slide slide-content bit-slide bit-content" data-slide-type="content" data-slide-id="slide-004">
+  <header class="bit-header">
+    <div class="bit-page-mark">Demo</div>
+    <h1 class="bit-slide-title">Hello World Works</h1>
   </header>
-  <main class="slide-body" data-safe-area>
+  <main class="bit-slide-body" data-safe-area>
     <div class="component component-two-column-text">
   <div class="panel">
     <h2>Input</h2>
@@ -95,23 +97,23 @@
 </div>
 
   </main>
-  <div class="slide-references">
+  <div class="bit-references">
     <div>components/two-column-text/schema.json</div>
   </div>
-  <footer class="slide-footer">
+  <footer class="bit-footer">
     <span>Hello World PPT</span>
     <span>04</span>
   </footer>
 </section>
 
 
-<section class="slide slide-ending" data-slide-type="ending" data-slide-id="slide-005">
-  <div class="ending-content">
-    <p class="ending-kicker">Smoke Test</p>
-    <h1 class="ending-title">Done</h1>
-    <p class="ending-subtitle">The Hello World deck is ready for browser review and DOM-to-PPTX export.</p>
+<section class="slide slide-ending bit-slide bit-ending" data-slide-type="ending" data-slide-id="slide-005">
+  <div class="bit-ending-panel">
+    <p class="bit-kicker">Smoke Test</p>
+    <h1 class="bit-ending-title">Done</h1>
+    <p class="bit-ending-subtitle">The Hello World deck is ready for browser review and DOM-to-PPTX export.</p>
   </div>
-  <div class="ending-contact">
+  <div class="bit-ending-contact">
     Generated from decks/generated/deck.data.json
   </div>
 </section>

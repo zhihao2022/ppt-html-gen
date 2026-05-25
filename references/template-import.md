@@ -2,7 +2,7 @@
 
 ## Source Handling
 
-Archive user template sources under `templates/source/`.
+Archive user template sources under `templates/<template-id>/source/`.
 
 Accepted files:
 
@@ -19,10 +19,13 @@ page-05-ending.png
 Update:
 
 ```text
-templates/source/template.source.json
-templates/template.mapping.json
-templates/template.analysis.md
-configs/template.config.json
+configs/template.registry.json
+configs/theme.registry.json
+templates/<template-id>/template.config.json
+templates/<template-id>/theme.config.json
+templates/<template-id>/source/template.source.json
+templates/<template-id>/template.mapping.json
+templates/<template-id>/template.analysis.md
 ```
 
 ## Import Steps
@@ -30,7 +33,7 @@ configs/template.config.json
 1. Identify representative pages for `cover`, `agenda`, `section`, `content`, and `ending`.
 2. Extract background colors, typography, title position, footer, logo/decorative elements, content safe area, and references area.
 3. Separate fixed elements from editable fields.
-4. Rebuild fixed page frames in `templates/*.html` and `styles/*.css`.
+4. Rebuild fixed page frames in `templates/<template-id>/*.html` and `templates/<template-id>/template.css`.
 5. Keep generated content in `deck.data.json`, not embedded in template HTML.
 6. Run `npm.cmd run check:template`.
 7. Run `npm.cmd run check`.
@@ -42,7 +45,7 @@ The temporary BIT reference under `tmp/BIT-template` used a locked SVG contract.
 - Treat the template contract as authoritative.
 - Preserve style lock colors and typography unless the user explicitly overrides them.
 - Keep fixed template elements stable; generated deck data fills placeholders only.
-- Record safe areas as explicit coordinates in `configs/template.config.json` and `templates/template.mapping.json`.
+- Record safe areas as explicit coordinates in `templates/<template-id>/template.config.json` and `templates/<template-id>/template.mapping.json`.
 - Do not silently stretch fixed structural slots.
 
 Specific BIT-style constraints to preserve when applicable:

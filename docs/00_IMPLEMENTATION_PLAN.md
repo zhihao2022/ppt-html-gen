@@ -154,12 +154,12 @@ html-pptx-skill/
 ### 3.1 需要完成的文件
 
 ```text
-templates/base.html
-templates/cover.html
-templates/agenda.html
-templates/section.html
-templates/content.html
-templates/ending.html
+templates/<template-id>/base.html
+templates/<template-id>/cover.html
+templates/<template-id>/agenda.html
+templates/<template-id>/section.html
+templates/<template-id>/content.html
+templates/<template-id>/ending.html
 
 styles/theme.css
 styles/layout.css
@@ -208,8 +208,8 @@ decks/generated/visual-check-report.json
 ### 4.1 输入
 
 ```text
-templates/source/template.pptx
-templates/source/template.pdf
+templates/<template-id>/source/template.pptx
+templates/<template-id>/source/template.pdf
 ```
 
 ### 4.2 Codex 需要完成

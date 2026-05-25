@@ -1,0 +1,28 @@
+{
+  "templateName": "bit-template",
+  "sourceStatus": "adapted-from-locked-svg-and-pptx",
+  "lastUpdated": "2026-05-25",
+  "sourceFiles": [
+    "templates/bit-template/source/AI-template.pptx",
+    "templates/bit-template/source/ai_template.pdf",
+    "templates/bit-template/source/template_contract.json",
+    "templates/bit-template/source/design_spec.md",
+    "templates/bit-template/source/title.svg",
+    "templates/bit-template/source/toc.svg",
+    "templates/bit-template/source/chapter.svg",
+    "templates/bit-template/source/content.svg",
+    "templates/bit-template/source/ending.svg"
+  ],
+  "slideTypeSources": {
+    "cover": "templates/bit-template/source/title.svg",
+    "agenda": "templates/bit-template/source/toc.svg",
+    "section": "templates/bit-template/source/chapter.svg",
+    "content": "templates/bit-template/source/content.svg",
+    "ending": "templates/bit-template/source/ending.svg"
+  },
+  "notes": [
+    "Adapted from the BIT locked SVG template contract.",
+    "The original PPTX/PDF are archived as source references.",
+    "The fixed 5-slot TOC contract is preserved in metadata; use free structural agenda when section count is not 5."
+  ]
+}

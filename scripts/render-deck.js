@@ -1,8 +1,8 @@
 const fs = require("fs");
 const path = require("path");
+const { loadTemplateConfig } = require("./lib/template-utils");
 
 const rootDir = path.resolve(__dirname, "..");
-const templateDir = path.join(rootDir, "templates");
 const componentDir = path.join(rootDir, "components");
 const dataPath = path.join(rootDir, "decks", "generated", "deck.data.json");
 const outputPath = path.join(rootDir, "decks", "generated", "deck.html");
@@ -36,10 +36,20 @@ function slideId(slide, index) {
   return slide.id || `slide-${String(index + 1).padStart(3, "0")}`;
 }
 
-function renderAgendaItems(items = []) {
+function plainSectionNumber(value, fallback) {
+  const raw = String(value ?? fallback ?? "").trim();
+  const match = raw.match(/\d+/);
+  if (!match) {
+    return raw;
+  }
+  return String(Number(match[0]));
+}
+
+function renderAgendaItems(items = [], options = {}) {
+  const plainNumbers = options.numberFormat === "plain_arabic_integer";
   return items
     .map((item, index) => {
-      const itemNumber = String(index + 1).padStart(2, "0");
+      const itemNumber = plainNumbers ? String(index + 1) : String(index + 1).padStart(2, "0");
       return [
         "<li>",
         `  <span class="agenda-index">${itemNumber}</span>`,
@@ -196,13 +206,20 @@ function renderContent(slide) {
   ].join("\n");
 }
 
-function renderSlide(slide, index, deck) {
+function renderSlide(slide, index, deck, templateContext) {
   const type = slide.type;
-  const templatePath = path.join(templateDir, `${type}.html`);
+  const slideConfig = templateContext.config.slideTypes?.[type];
+  const templatePath = slideConfig?.file
+    ? path.join(rootDir, slideConfig.file)
+    : path.join(templateContext.templateDir, `${type}.html`);
 
   if (!fs.existsSync(templatePath)) {
     throw new Error(`Missing template for slide type "${type}": ${templatePath}`);
   }
+
+  const agendaNumberFormat = templateContext.config.slideTypes?.agenda?.structuralSlots?.slotCount === 5
+    ? "plain_arabic_integer"
+    : "padded";
 
   const commonValues = {
     slideId: escapeHtml(slideId(slide, index)),
@@ -215,8 +232,9 @@ function renderSlide(slide, index, deck) {
     date: escapeHtml(slide.date || deck.date),
     section: escapeHtml(slide.section),
     sectionNumber: escapeHtml(slide.sectionNumber),
+    sectionNumberPlain: escapeHtml(plainSectionNumber(slide.sectionNumber, index + 1)),
     contact: escapeHtml(slide.contact),
-    items: renderAgendaItems(slide.items),
+    items: renderAgendaItems(slide.items, { numberFormat: agendaNumberFormat }),
     content: renderContent(slide),
     references: renderReferences(slide.references)
   };
@@ -228,16 +246,17 @@ function renderDeck() {
   const data = readJson(dataPath);
   const deck = data.deck || {};
   const slides = Array.isArray(data.slides) ? data.slides : [];
+  const templateContext = loadTemplateConfig(deck.template);
 
   if (!slides.length) {
     throw new Error("deck.data.json must include at least one slide.");
   }
 
   const renderedSlides = slides
-    .map((slide, index) => renderSlide(slide, index, deck))
+    .map((slide, index) => renderSlide(slide, index, deck, templateContext))
     .join("\n\n");
 
-  const html = renderTemplate(readText(path.join(templateDir, "base.html")), {
+  const html = renderTemplate(readText(path.join(templateContext.templateDir, "base.html")), {
     language: escapeHtml(deck.language || "zh-CN"),
     deckTitle: escapeHtml(deck.title || "Untitled Deck"),
     slides: renderedSlides

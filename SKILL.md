@@ -26,17 +26,19 @@ Use these default locations:
 decks/input/outline.md
 decks/input/materials.md
 decks/input/references.md
-templates/source/
+templates/<template-id>/source/
 configs/theme.config.json
+configs/theme.registry.json
 configs/template.config.json
+configs/template.registry.json
 configs/component.registry.json
 ```
 
-If a user provides PPTX/PDF/template screenshots, archive them under `templates/source/` and update `templates/source/template.source.json`, `templates/template.mapping.json`, and `templates/template.analysis.md`.
+If a user provides PPTX/PDF/template screenshots, archive them under `templates/<template-id>/source/` and update that template's `template.config.json`, `theme.config.json`, `source/template.source.json`, `template.mapping.json`, and `template.analysis.md`. Register the template in `configs/template.registry.json`.
 
 ## Workflow
 
-1. Read `configs/template.config.json`, `configs/component.registry.json`, and relevant files in `references/`.
+1. Read `configs/template.registry.json`, the active template config, `configs/component.registry.json`, and relevant files in `references/`.
 2. Read user inputs from `decks/input/` or the paths the user provides.
 3. Create `decks/generated/deck.plan.md` with slide list, slide type, component choice, content source, risks, and confirmation questions.
 4. Wait for user confirmation for real decks.
@@ -86,6 +88,7 @@ Checks:
 - overflow
 - layout
 - assets
+- export-readiness
 
 Known issues:
 - ...

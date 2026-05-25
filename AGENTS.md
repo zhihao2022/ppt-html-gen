@@ -85,8 +85,8 @@ node --check userscript/export-html-to-pptx.user.js
 
 ```text
 configs/          配置合同
-templates/        slide 模板
-templates/source/ 用户模板源文件归档
+templates/<template-id>/        slide 模板
+templates/<template-id>/source/ 用户模板源文件归档
 components/       可复用正文组件
 styles/           全局 CSS
 scripts/          渲染和检查脚本
@@ -100,7 +100,7 @@ docs/             工程设计和规范文档
 ## 修改指南
 
 - 改渲染逻辑：优先修改 `scripts/render-deck.js`，然后运行 `npm.cmd run render && npm.cmd run check`。
-- 改模板：同时更新 `configs/template.config.json`、`templates/template.mapping.json` 或 `templates/template.analysis.md`，然后运行 `npm.cmd run check:template`。
+- 改模板：同时更新 `configs/template.registry.json`、`templates/<template-id>/template.config.json`、`templates/<template-id>/theme.config.json`、`templates/<template-id>/template.mapping.json` 或 `templates/<template-id>/template.analysis.md`，然后运行 `npm.cmd run check:template`。
 - 新增组件：创建 `components/<name>/` 下 4 个必需文件，更新 `configs/component.registry.json`，然后运行 `npm.cmd run component-previews`。
 - 改导出：更新 `configs/export.config.json`、`userscript/` 或 `scripts/check-export-readiness.js`，然后运行 `npm.cmd run check:export`。
 

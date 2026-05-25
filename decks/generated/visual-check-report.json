@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-25T05:37:23.422Z",
+  "generatedAt": "2026-05-25T05:55:02.797Z",
   "deckHtml": "decks/generated/deck.html",
   "summary": {
     "status": "pass",
@@ -12,10 +12,24 @@
     {
       "name": "template",
       "status": "pass",
-      "message": "5 slide template(s) match the template contract.",
+      "message": "2 registered template(s) match the template contract.",
       "details": {
-        "templateName": "minimal-academic-blue",
-        "version": "0.1.0",
+        "activeTemplate": "bit-template",
+        "templateCount": 2,
+        "templates": [
+          {
+            "id": "minimal-academic-blue",
+            "templateName": "minimal-academic-blue",
+            "version": "0.1.0",
+            "config": "templates/minimal-academic-blue/template.config.json"
+          },
+          {
+            "id": "bit-template",
+            "templateName": "bit-template",
+            "version": "1.0.0",
+            "config": "templates/bit-template/template.config.json"
+          }
+        ],
         "requiredSlideTypes": [
           "cover",
           "agenda",
@@ -25,7 +39,7 @@
         ],
         "issues": []
       },
-      "checkedAt": "2026-05-25T05:37:13.871Z"
+      "checkedAt": "2026-05-25T05:54:53.138Z"
     },
     {
       "name": "overflow",
@@ -35,7 +49,7 @@
         "contentSlideCount": 1,
         "issues": []
       },
-      "checkedAt": "2026-05-25T05:37:16.218Z"
+      "checkedAt": "2026-05-25T05:54:55.629Z"
     },
     {
       "name": "layout",
@@ -46,7 +60,7 @@
         "actualSlideCount": 5,
         "issues": []
       },
-      "checkedAt": "2026-05-25T05:37:18.297Z"
+      "checkedAt": "2026-05-25T05:54:57.797Z"
     },
     {
       "name": "assets",
@@ -56,7 +70,7 @@
         "imageCount": 0,
         "issues": []
       },
-      "checkedAt": "2026-05-25T05:37:20.846Z"
+      "checkedAt": "2026-05-25T05:55:00.457Z"
     },
     {
       "name": "export-readiness",
@@ -72,7 +86,7 @@
         "exporterAvailable": true,
         "issues": []
       },
-      "checkedAt": "2026-05-25T05:37:23.420Z"
+      "checkedAt": "2026-05-25T05:55:02.796Z"
     }
   ]
 }

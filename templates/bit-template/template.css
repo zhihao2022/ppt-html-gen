@@ -1,0 +1,298 @@
+:root {
+  --bit-bg: #FFFFFF;
+  --bit-primary: #005C30;
+  --bit-accent: #009944;
+  --bit-secondary-accent: #A13F0B;
+  --bit-text: #057748;
+  --bit-text-secondary: #3F3F3F;
+  --bit-border: #A13F0B;
+  --bit-muted: #A6A6A6;
+  --bit-soft: #CAE5CD;
+  --font-title: "Times New Roman", "Microsoft YaHei", serif;
+  --font-body: "Times New Roman", "Microsoft YaHei", serif;
+}
+
+.bit-slide {
+  background: var(--bit-bg);
+  color: var(--bit-text-secondary);
+  font-family: var(--font-body);
+  box-shadow: 0 24px 80px rgba(0, 92, 48, 0.16);
+}
+
+.bit-slide::before {
+  border-top: 0;
+}
+
+.bit-slide::after {
+  content: "";
+  position: absolute;
+  left: 56px;
+  right: 56px;
+  bottom: 54px;
+  height: 3px;
+  background: var(--bit-border);
+}
+
+.bit-kicker,
+.bit-page-mark {
+  margin: 0 0 14px;
+  color: var(--bit-secondary-accent);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.bit-header {
+  position: absolute;
+  left: 96px;
+  right: 96px;
+  top: 64px;
+}
+
+.bit-slide-title {
+  margin: 0;
+  max-width: 1500px;
+  color: var(--bit-text);
+  font-size: 48px;
+  line-height: 1.12;
+  font-weight: 700;
+}
+
+.bit-footer {
+  position: absolute;
+  left: 96px;
+  right: 96px;
+  bottom: 22px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--bit-text-secondary);
+  font-size: 16px;
+  z-index: 3;
+}
+
+.bit-footer-inverse {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.bit-cover {
+  background: linear-gradient(90deg, #FFFFFF 0 72%, var(--bit-primary) 72% 100%);
+}
+
+.bit-cover-mark {
+  position: absolute;
+  right: 210px;
+  top: 0;
+  width: 78px;
+  height: 100%;
+  background: var(--bit-secondary-accent);
+}
+
+.bit-cover-frame {
+  position: absolute;
+  left: 72px;
+  top: 72px;
+  right: 72px;
+  bottom: 72px;
+  border: 4px solid var(--bit-border);
+}
+
+.bit-cover-content {
+  position: absolute;
+  left: 138px;
+  top: 248px;
+  width: 1120px;
+}
+
+.bit-cover-title {
+  margin: 0 0 28px;
+  color: var(--bit-text);
+  font-size: 59px;
+  line-height: 1.12;
+  font-weight: 700;
+}
+
+.bit-cover-subtitle {
+  max-width: 980px;
+  color: var(--bit-text-secondary);
+  font-size: 35px;
+  line-height: 1.32;
+}
+
+.bit-cover-meta {
+  position: absolute;
+  left: 138px;
+  bottom: 130px;
+  display: flex;
+  gap: 36px;
+  color: var(--bit-text-secondary);
+  font-size: 28px;
+}
+
+.bit-toc-body {
+  position: absolute;
+  left: 170px;
+  right: 170px;
+  top: 230px;
+}
+
+.bit-toc-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bit-toc-list li {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 28px;
+  align-items: center;
+  padding: 20px 28px;
+  border: 3px solid var(--bit-border);
+  background: #FFFFFF;
+}
+
+.bit-toc-list .agenda-index {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  background: var(--bit-primary);
+  color: #FFFFFF;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.bit-toc-list .agenda-text {
+  color: var(--bit-text);
+  font-size: 32px;
+  line-height: 1.22;
+  font-weight: 700;
+}
+
+.bit-section {
+  background: var(--bit-primary);
+  color: #FFFFFF;
+}
+
+.bit-section::after {
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.bit-section-number {
+  position: absolute;
+  right: 126px;
+  top: 90px;
+  color: rgba(255, 255, 255, 0.18);
+  font-size: 230px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.bit-section-content {
+  position: absolute;
+  left: 138px;
+  right: 360px;
+  top: 330px;
+}
+
+.bit-section .bit-kicker {
+  color: #CAE5CD;
+}
+
+.bit-section-title {
+  margin: 0 0 24px;
+  color: #FFFFFF;
+  font-size: 58px;
+  line-height: 1.1;
+}
+
+.bit-section-subtitle {
+  max-width: 1120px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 32px;
+  line-height: 1.34;
+}
+
+.bit-slide-body {
+  position: absolute;
+  left: 144px;
+  top: 156px;
+  width: 1632px;
+  height: 730px;
+}
+
+.bit-references {
+  position: absolute;
+  left: 144px;
+  right: 144px;
+  bottom: 76px;
+  color: var(--bit-muted);
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.bit-content .component-two-column-text .panel,
+.bit-content .component-three-cards .card,
+.bit-content .component-comparison-table table,
+.bit-content .component-pipeline-flow .step,
+.bit-content .component-image-text figure,
+.bit-content .component-image-text .text-panel,
+.bit-content .component-bullet-list li {
+  border-color: var(--bit-border);
+}
+
+.bit-content .component-two-column-text h2,
+.bit-content .component-three-cards h2,
+.bit-content .component-comparison-table th,
+.bit-content .component-pipeline-flow h2,
+.bit-content .component-image-text h2 {
+  color: var(--bit-text);
+}
+
+.bit-content .component-three-cards .card-index,
+.bit-content .component-pipeline-flow .step-index,
+.bit-content .agenda-index {
+  background: var(--bit-primary);
+}
+
+.bit-content .component-comparison-table th {
+  background: var(--bit-primary);
+  color: #FFFFFF;
+}
+
+.bit-ending {
+  background: linear-gradient(90deg, var(--bit-primary) 0 34%, #FFFFFF 34% 100%);
+}
+
+.bit-ending-panel {
+  position: absolute;
+  left: 470px;
+  right: 138px;
+  top: 300px;
+  text-align: left;
+}
+
+.bit-ending-title {
+  margin: 0 0 24px;
+  color: var(--bit-text);
+  font-size: 76px;
+  line-height: 1.05;
+}
+
+.bit-ending-subtitle {
+  color: var(--bit-text-secondary);
+  font-size: 32px;
+  line-height: 1.35;
+}
+
+.bit-ending-contact {
+  position: absolute;
+  left: 470px;
+  right: 138px;
+  bottom: 136px;
+  color: var(--bit-text-secondary);
+  font-size: 24px;
+}

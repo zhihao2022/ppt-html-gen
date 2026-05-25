@@ -1,0 +1,15 @@
+{
+  "activeTheme": "bit-template",
+  "themes": [
+    {
+      "id": "minimal-academic-blue",
+      "config": "templates/minimal-academic-blue/theme.config.json",
+      "templateId": "minimal-academic-blue"
+    },
+    {
+      "id": "bit-template",
+      "config": "templates/bit-template/theme.config.json",
+      "templateId": "bit-template"
+    }
+  ]
+}

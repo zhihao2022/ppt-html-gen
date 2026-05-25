@@ -38,19 +38,19 @@ color palette
 建议将模板源文件放在：
 
 ```text
-templates/source/
+templates/<template-id>/source/
 ```
 
 示例：
 
 ```text
-templates/source/academic-blue-template.pptx
-templates/source/academic-blue-template.pdf
-templates/source/page-01-cover.png
-templates/source/page-02-agenda.png
-templates/source/page-03-section.png
-templates/source/page-04-content.png
-templates/source/page-05-ending.png
+templates/academic-blue/source/academic-blue-template.pptx
+templates/academic-blue/source/academic-blue-template.pdf
+templates/academic-blue/source/page-01-cover.png
+templates/academic-blue/source/page-02-agenda.png
+templates/academic-blue/source/page-03-section.png
+templates/academic-blue/source/page-04-content.png
+templates/academic-blue/source/page-05-ending.png
 ```
 
 ## 4. 模板分析流程
@@ -270,23 +270,23 @@ safe area 是 Codex 生成正文内容的唯一合法区域。除页标题、页
   },
   "slideTypes": {
     "cover": {
-      "file": "templates/cover.html",
+      "file": "templates/academic-blue/cover.html",
       "editableFields": ["title", "subtitle", "author", "date"],
       "fixedLayout": true
     },
     "agenda": {
-      "file": "templates/agenda.html",
+      "file": "templates/academic-blue/agenda.html",
       "editableFields": ["title", "items"],
       "fixedLayout": true,
       "maxItems": 6
     },
     "section": {
-      "file": "templates/section.html",
+      "file": "templates/academic-blue/section.html",
       "editableFields": ["sectionNumber", "title", "subtitle"],
       "fixedLayout": true
     },
     "content": {
-      "file": "templates/content.html",
+      "file": "templates/academic-blue/content.html",
       "editableFields": ["section", "title", "content", "references"],
       "fixedLayout": false,
       "safeArea": {
@@ -297,7 +297,7 @@ safe area 是 Codex 生成正文内容的唯一合法区域。除页标题、页
       }
     },
     "ending": {
-      "file": "templates/ending.html",
+      "file": "templates/academic-blue/ending.html",
       "editableFields": ["title", "subtitle", "contact"],
       "fixedLayout": true
     }

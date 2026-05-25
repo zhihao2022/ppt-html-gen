@@ -1,0 +1,32 @@
+{
+  "themeName": "bit-template",
+  "colors": {
+    "background": "#FFFFFF",
+    "surface": "#FFFFFF",
+    "primary": "#005C30",
+    "secondary": "#009944",
+    "accent": "#A13F0B",
+    "textPrimary": "#057748",
+    "textSecondary": "#3F3F3F",
+    "muted": "#A6A6A6",
+    "border": "#A13F0B"
+  },
+  "fonts": {
+    "title": "Times New Roman",
+    "body": "Times New Roman",
+    "fallback": "Microsoft YaHei, serif"
+  },
+  "typography": {
+    "coverTitle": 59,
+    "slideTitle": 48,
+    "sectionTitle": 58,
+    "body": 28,
+    "caption": 16,
+    "reference": 16
+  },
+  "spacing": {
+    "slidePaddingX": 96,
+    "slidePaddingY": 72,
+    "contentGap": 32
+  }
+}

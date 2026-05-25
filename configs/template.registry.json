@@ -1,0 +1,21 @@
+{
+  "activeTemplate": "bit-template",
+  "templates": [
+    {
+      "id": "minimal-academic-blue",
+      "displayName": "Minimal Academic Blue",
+      "config": "templates/minimal-academic-blue/template.config.json",
+      "templateDir": "templates/minimal-academic-blue",
+      "category": "starter",
+      "description": "HTML-native starter template used by the first implementation stages."
+    },
+    {
+      "id": "bit-template",
+      "displayName": "BIT Green Academic Template",
+      "config": "templates/bit-template/template.config.json",
+      "templateDir": "templates/bit-template",
+      "category": "academic",
+      "description": "User-provided BIT green academic template adapted from PPTX/PDF and locked SVG contract."
+    }
+  ]
+}

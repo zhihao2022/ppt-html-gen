@@ -4,21 +4,22 @@
 
 Current source status: `html-native`.
 
-This template was authored directly in HTML/CSS for the minimal implementation. When importing a user PPTX/PDF template, archive source files under `templates/source/` and update:
+This template was authored directly in HTML/CSS for the minimal implementation. When importing a user PPTX/PDF template, archive source files under `templates/<template-id>/source/` and update:
 
-- `templates/source/template.source.json`
-- `templates/template.mapping.json`
-- `configs/template.config.json`
+- `templates/<template-id>/source/template.source.json`
+- `templates/<template-id>/template.mapping.json`
+- `templates/<template-id>/template.config.json`
+- `configs/template.registry.json`
 
 ## Slide Type Mapping
 
 | Slide Type | Template File | Role |
 |---|---|---|
-| cover | `templates/cover.html` | Deck title, subtitle, author, date |
-| agenda | `templates/agenda.html` | Chapter or section overview |
-| section | `templates/section.html` | Section divider |
-| content | `templates/content.html` | Component-driven content page |
-| ending | `templates/ending.html` | Closing page |
+| cover | `templates/minimal-academic-blue/cover.html` | Deck title, subtitle, author, date |
+| agenda | `templates/minimal-academic-blue/agenda.html` | Chapter or section overview |
+| section | `templates/minimal-academic-blue/section.html` | Section divider |
+| content | `templates/minimal-academic-blue/content.html` | Component-driven content page |
+| ending | `templates/minimal-academic-blue/ending.html` | Closing page |
 
 ## Fixed Elements
 
@@ -65,7 +66,7 @@ Content must not rely on scroll containers or overflow outside this region.
 When a user template is imported:
 
 ```text
-[ ] Archive original PPTX/PDF under templates/source/
+[ ] Archive original PPTX/PDF under templates/<template-id>/source/
 [ ] Export representative screenshots using page-XX-{slideType}.png
 [ ] Identify cover, agenda, section, content, ending pages
 [ ] Update template.mapping.json sourceScreenshot fields

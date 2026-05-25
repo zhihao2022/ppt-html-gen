@@ -1,0 +1,67 @@
+{
+  "templateName": "bit-template",
+  "version": "1.0.0",
+  "slideSize": {
+    "width": 1920,
+    "height": 1080
+  },
+  "sourceContract": "templates/bit-template/source/template_contract.json",
+  "slideTypes": {
+    "cover": {
+      "templateFile": "templates/bit-template/cover.html",
+      "sourceFile": "templates/bit-template/source/title.svg",
+      "sourceRole": "title",
+      "editableFields": ["kicker", "title", "subtitle", "author", "date"],
+      "fixedElements": ["bit-cover-mark", "bit-cover-frame", "bit-cover-content", "bit-cover-meta"],
+      "safeArea": null
+    },
+    "agenda": {
+      "templateFile": "templates/bit-template/agenda.html",
+      "sourceFile": "templates/bit-template/source/toc.svg",
+      "sourceRole": "toc",
+      "editableFields": ["title", "items"],
+      "fixedElements": ["bit-header", "bit-toc-body", "bit-footer"],
+      "structuralSlots": {
+        "slotCount": 5,
+        "countMatchRequired": true,
+        "mismatchAction": "Use a free structural agenda page in BIT style instead of filling blank slots or squeezing extras."
+      },
+      "safeArea": null
+    },
+    "section": {
+      "templateFile": "templates/bit-template/section.html",
+      "sourceFile": "templates/bit-template/source/chapter.svg",
+      "sourceRole": "chapter",
+      "editableFields": ["sectionNumberPlain", "kicker", "title", "subtitle"],
+      "fixedElements": ["bit-section-number", "bit-section-content", "bit-footer"],
+      "safeArea": null
+    },
+    "content": {
+      "templateFile": "templates/bit-template/content.html",
+      "sourceFile": "templates/bit-template/source/content.svg",
+      "sourceRole": "content",
+      "editableFields": ["section", "title", "layout", "content", "references"],
+      "fixedElements": ["bit-header", "bit-slide-body", "bit-references", "bit-footer"],
+      "safeArea": {
+        "selector": "[data-safe-area]",
+        "x": 144,
+        "y": 156,
+        "width": 1632,
+        "height": 730,
+        "sourceWorkspace": {
+          "viewBox": "0 0 1280 720",
+          "bbox": [96, 104, 1088, 542],
+          "scale": 1.5
+        }
+      }
+    },
+    "ending": {
+      "templateFile": "templates/bit-template/ending.html",
+      "sourceFile": "templates/bit-template/source/ending.svg",
+      "sourceRole": "ending",
+      "editableFields": ["kicker", "title", "subtitle", "contact"],
+      "fixedElements": ["bit-ending-panel", "bit-ending-contact"],
+      "safeArea": null
+    }
+  }
+}

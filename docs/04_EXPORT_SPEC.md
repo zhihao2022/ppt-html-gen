@@ -41,7 +41,7 @@ to:
 vendor/dom-to-pptx/dom-to-pptx.bundle.js
 ```
 
-`templates/base.html` loads this script, so rendered decks expose:
+`templates/<template-id>/base.html` loads this script, so rendered decks expose:
 
 ```js
 window.domToPptx.exportToPptx
