@@ -1,125 +1,144 @@
 # PPT HTML Gen
 
-`ppt-html-gen` 是一个基于 HTML/CSS 的半自动 PPT 生成工程。它把 PPT 生成拆成四层：
+面向 Codex 的 HTML 幻灯片生成工具。它用结构化 JSON、固定 HTML 模板和可复用组件生成可在浏览器中预览的幻灯片，并在导出 PPTX 前运行自动检查。
 
-1. `deck.data.json`：结构化页面内容。
-2. `templates/`：固定幻灯片模板。
-3. `components/`：可复用正文组件。
-4. `scripts/`：渲染、检查、截图和导出就绪验证。
+这个仓库同时是一个可安装/引用的 Codex Skill：根目录的 [SKILL.md](./SKILL.md) 定义了 `$ppt-html-gen` 的工作流和约束。
 
-生成结果是可在浏览器中预览的 `deck.html`，并可通过油猴脚本配合 `dom-to-pptx` 导出为尽量可编辑的 `.pptx`。
+## 适合什么场景
 
-## 环境要求
+- 根据大纲和材料生成汇报 PPT 的 HTML 预览稿。
+- 把 PPTX/PDF 模板转成稳定的 HTML/CSS 模板资产。
+- 用可复用组件生成正文页，而不是每次自由排版。
+- 在导出 PPTX 前检查尺寸、溢出、资源和导出风险。
+- 配合 `dom-to-pptx` / 油猴脚本导出尽量可编辑的 PPTX。
 
-- Node.js `>= 18`
-- npm
-- Windows / PowerShell 环境推荐使用 `npm.cmd`
+## 不是什么
 
-如果 PowerShell 拦截 `npm.ps1` 或 `npx.ps1`，请使用：
-
-```bash
-npm.cmd run check
-npx.cmd ...
-```
+- 不是网页展示框架。每页 slide 固定为 `1920px × 1080px`，HTML 在这里是 PPT 画布。
+- 不是“一键生成完美 PPTX”的工具。推荐流程是先生成 HTML，浏览器检查后再导出 PPTX。
+- 不鼓励整页截图式导出。默认目标是保留文本、表格、图片等 DOM 元素的可编辑性。
 
 ## 快速开始
 
-安装依赖：
-
 ```bash
 npm.cmd install
-```
-
-渲染示例 deck：
-
-```bash
 npm.cmd run render
-```
-
-运行完整检查：
-
-```bash
 npm.cmd run check
-```
-
-启动本地预览：
-
-```bash
 npm.cmd run serve
 ```
 
-打开：
+打开本地预览：
 
 ```text
 http://127.0.0.1:4173/
 ```
 
+Windows PowerShell 如果拦截 `npm.ps1` / `npx.ps1`，请使用 `npm.cmd` / `npx.cmd`。
+
+## 作为 Codex Skill 使用
+
+这个仓库根目录就是 skill 目录。Codex 读取 [SKILL.md](./SKILL.md) 后，会按以下顺序工作：
+
+1. 读取 `configs/template.config.json` 和 `configs/component.registry.json`。
+2. 读取输入材料，例如 `decks/input/outline.md`、`decks/input/materials.md`。
+3. 先生成或更新 `decks/generated/deck.plan.md`，等待用户确认。
+4. 用户确认后生成 `decks/generated/deck.data.json`。
+5. 执行渲染、检查和截图命令。
+6. 输出 `deck.html`、检查报告和人工检查建议。
+
+显式调用示例：
+
+```text
+使用 $ppt-html-gen，根据 decks/input/outline.md 和 decks/input/materials.md 生成一份 HTML PPT 预览，并运行完整检查。
+```
+
+## 核心工作流
+
+```text
+outline.md / materials.md / template source
+        ↓
+decks/generated/deck.plan.md
+        ↓ 用户确认
+decks/generated/deck.data.json
+        ↓
+npm.cmd run render
+        ↓
+decks/generated/deck.html
+        ↓
+npm.cmd run check
+        ↓
+browser preview / screenshots
+        ↓
+userscript + dom-to-pptx export
+```
+
 ## 常用命令
 
-```bash
-npm.cmd run check:syntax          # 检查脚本语法
-npm.cmd run render                # 由 deck.data.json 生成 deck.html
-npm.cmd run check:template        # 检查模板合同
-npm.cmd run check:overflow        # 检查 safe area 溢出
-npm.cmd run check:layout          # 检查 slide 结构和尺寸
-npm.cmd run check:assets          # 检查图片和导出风险元素
-npm.cmd run check:export          # 检查 PPTX 导出就绪状态
-npm.cmd run check                 # 运行完整检查
-npm.cmd run screenshots           # 生成逐页截图
-npm.cmd run component-previews    # 生成组件预览图
-npm.cmd run serve                 # 启动预览服务
+| 命令 | 作用 |
+|---|---|
+| `npm.cmd run render` | 根据 `deck.data.json` 生成 `deck.html` |
+| `npm.cmd run check` | 运行完整检查 |
+| `npm.cmd run check:template` | 检查模板合同 |
+| `npm.cmd run check:overflow` | 检查 safe area 溢出 |
+| `npm.cmd run check:layout` | 检查 slide 结构、尺寸和基础字段 |
+| `npm.cmd run check:assets` | 检查图片、资源和导出风险元素 |
+| `npm.cmd run check:export` | 检查 PPTX 导出就绪状态 |
+| `npm.cmd run screenshots` | 生成逐页截图 |
+| `npm.cmd run component-previews` | 生成组件预览图 |
+| `npm.cmd run serve` | 启动本地预览服务 |
+
+完整检查报告输出到：
+
+```text
+decks/generated/visual-check-report.json
+```
+
+合格状态应为：
+
+```text
+summary.status = pass
+failed = 0
+warnings = 0
 ```
 
 ## 目录结构
 
 ```text
 .
-├── SKILL.md                         # Codex skill 入口说明
+├── SKILL.md                         # Codex skill 入口
+├── AGENTS.md                        # 仓库内 Agent 协作约束
 ├── agents/openai.yaml               # skill UI 元数据
-├── configs/                         # 主题、模板、组件、导出配置
-├── templates/                       # HTML 幻灯片模板
+├── configs/                         # 模板、主题、组件、导出配置
+├── templates/                       # HTML slide 模板
+├── templates/source/                # 用户 PPTX/PDF/截图模板源文件归档
 ├── components/                      # 可复用正文组件
-├── styles/                          # 全局主题、布局、组件样式
-├── scripts/                         # 渲染、检查、截图和预览服务脚本
-├── userscript/                      # 油猴导出辅助脚本
-├── decks/input/                     # 用户输入材料
-├── decks/generated/                 # 生成结果
-├── decks/exports/                   # PPTX 导出目录
-├── docs/                            # 工程规划和规范文档
-└── references/                      # skill 运行参考文档
+├── styles/                          # 全局 CSS
+├── scripts/                         # 渲染、检查、截图、预览脚本
+├── userscript/                      # DOM-to-PPTX 导出辅助脚本
+├── decks/input/                     # 输入大纲和材料
+├── decks/generated/                 # 生成的 HTML、JSON、报告和截图
+├── decks/exports/                   # PPTX 导出目标目录
+├── docs/                            # 设计和实现文档
+└── references/                      # skill 按需读取的参考说明
 ```
 
-## 生成流程
+## 数据合同
 
-正式生成 deck 时推荐按以下流程执行：
-
-1. 在 `decks/input/outline.md` 写 PPT 大纲。
-2. 在 `decks/input/materials.md` 写参考材料。
-3. 先生成或维护 `decks/generated/deck.plan.md`，确认页数、章节、slide type、组件选择和风险。
-4. 用户确认后，生成 `decks/generated/deck.data.json`。
-5. 执行 `npm.cmd run render` 生成 `decks/generated/deck.html`。
-6. 执行 `npm.cmd run check`。
-7. 如检查失败，优先修改 `deck.data.json`、组件内容或模板/组件 CSS。
-8. 执行 `npm.cmd run screenshots` 做浏览器视觉检查。
-9. 用 `userscript/export-html-to-pptx.user.js` 配合页面中的 `dom-to-pptx` 导出 PPTX。
-
-## deck.data.json
-
-示例位置：
+主输入文件：
 
 ```text
 decks/generated/deck.data.json
 ```
 
-顶层结构：
+基本结构：
 
 ```json
 {
   "deck": {
-    "title": "",
-    "subtitle": "",
-    "author": "",
-    "date": "",
+    "title": "Deck title",
+    "subtitle": "Deck subtitle",
+    "author": "Author",
+    "date": "2026-05-25",
     "language": "zh-CN"
   },
   "slides": []
@@ -136,20 +155,20 @@ content
 ending
 ```
 
-正文页必须选择一个 `layout`，例如：
+正文页示例：
 
 ```json
 {
   "id": "slide-004",
   "type": "content",
-  "section": "Component Library",
-  "title": "Two Column Text",
+  "section": "Workflow",
+  "title": "Renderer 只负责组合稳定资产",
   "layout": "two-column-text",
   "content": {
-    "leftTitle": "Template",
-    "leftBody": "Fixed visual frame.",
-    "rightTitle": "Component",
-    "rightBody": "Reusable content layout."
+    "leftTitle": "输入数据",
+    "leftBody": "deck.data.json 描述页面结构和内容。",
+    "rightTitle": "HTML 输出",
+    "rightBody": "render-deck.js 将模板、组件和数据组合成固定尺寸 slide。"
   },
   "references": []
 }
@@ -157,7 +176,7 @@ ending
 
 ## 组件库
 
-当前内置组件：
+内置组件：
 
 ```text
 two-column-text
@@ -167,16 +186,16 @@ pipeline-flow
 image-text
 ```
 
-每个组件必须包含：
+每个组件目录包含：
 
 ```text
-components/<name>/component.html
-components/<name>/component.css
-components/<name>/schema.json
-components/<name>/preview.png
+component.html
+component.css
+schema.json
+preview.png
 ```
 
-新增组件后，需要更新：
+新增组件后需要更新：
 
 ```text
 configs/component.registry.json
@@ -191,7 +210,7 @@ npm.cmd run check
 
 ## 模板接入
 
-模板源文件放在：
+用户提供的模板源文件放到：
 
 ```text
 templates/source/
@@ -209,7 +228,7 @@ page-04-content.png
 page-05-ending.png
 ```
 
-模板接入时需要维护：
+模板相关配置和说明：
 
 ```text
 configs/template.config.json
@@ -218,25 +237,20 @@ templates/template.mapping.json
 templates/template.analysis.md
 ```
 
-检查模板合同：
+模板接入原则：
 
-```bash
-npm.cmd run check:template
-```
-
-模板规则：
-
-- 不要随意修改固定模板结构。
-- 不要随意修改主题色和字体。
-- 正文内容只能进入 `[data-safe-area]`。
-- 内容超载时拆页或换组件，不要缩小到不可读字号。
+- 固定视觉元素写入模板和 CSS。
+- 可替换内容通过 `deck.data.json` 填充。
+- 正文页必须定义 `[data-safe-area]`。
+- 不用缩小到不可读字号、滚动区域或溢出来解决内容超载。
+- 如果模板有锁定槽位，例如固定 5 槽目录页，槽位数量不匹配时应重规划页面，而不是硬塞。
 
 ## 导出 PPTX
 
-导出配置：
+导出前先运行：
 
-```text
-configs/export.config.json
+```bash
+npm.cmd run check:export
 ```
 
 油猴脚本：
@@ -245,13 +259,7 @@ configs/export.config.json
 userscript/export-html-to-pptx.user.js
 ```
 
-导出前运行：
-
-```bash
-npm.cmd run check:export
-```
-
-油猴脚本只导出：
+该脚本只导出：
 
 ```js
 Array.from(document.querySelectorAll(".slide"))
@@ -265,63 +273,31 @@ window.domToPptx.export
 window.exportToPptx
 ```
 
-推荐导出选项：
-
-```js
-{
-  fileName: "output.pptx",
-  layout: "LAYOUT_16x9",
-  svgAsVector: true,
-  autoEmbedFonts: true
-}
-```
-
-## 检查报告
-
-完整检查报告输出到：
+推荐导出选项记录在：
 
 ```text
-decks/generated/visual-check-report.json
+configs/export.config.json
 ```
 
-合格状态应为：
+## 当前状态
 
-```text
-summary.status = pass
-failed = 0
-warnings = 0
-```
+已实现：
 
-当前完整检查包含：
+- HTML deck 渲染闭环
+- 模板合同检查
+- 组件库和组件预览
+- overflow / layout / assets / export-readiness 检查
+- 本地预览服务
+- 油猴导出辅助脚本
+- Codex Skill 元数据和引用文档
 
-```text
-template
-overflow
-layout
-assets
-export-readiness
-```
+待继续增强：
 
-## 设计原则
+- 直接集成 `dom-to-pptx` 依赖和可运行导出页面
+- 从 PPTX/PDF 自动提取模板截图和结构
+- 更丰富的组件库
+- 更严格的文本容量和 schema 校验
 
-- HTML 是 PPT 画布，不是普通网页文档。
-- 每页固定为 `1920px × 1080px`。
-- 模板负责视觉风格和固定版式。
-- 组件负责正文内容块的稳定排版。
-- Codex 或脚本只填充数据、选择组件、生成必要内容。
-- 不把整页导出为截图，除非用户明确接受不可编辑输出。
-- 不用滚动区域解决内容超载。
+## 许可证
 
-## GitHub 发布
-
-本仓库可直接推送到 GitHub。若尚未配置远程仓库，可用：
-
-```bash
-gh repo create ppt-html-gen --public --source . --remote origin --push
-```
-
-后续推送：
-
-```bash
-git push
-```
+暂未声明许可证。公开使用前请按项目需要补充 `LICENSE`。
